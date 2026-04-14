@@ -1,0 +1,394 @@
+/* ══════════════════════════════════════════
+   VALUE ADDED — Contained Premium Layout
+══════════════════════════════════════════ */
+
+.va-section {
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  overflow: hidden;
+  background: #f0f7f3;
+  padding: 110px 0 120px;
+}
+
+/* ── Subtle grid texture ── */
+.va-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(34, 197, 94, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 197, 94, 0.06) 1px, transparent 1px);
+  background-size: 56px 56px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ── Centered 1140px container ── */
+.va-container {
+  position: relative;
+  z-index: 1;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 0;
+  align-items: stretch;
+  overflow: hidden;
+}
+
+/* ══════════════════════════════
+   LEFT — Text content
+══════════════════════════════ */
+.va-left {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  background: #ffffff;
+  padding: 80px 64px 80px 24px;
+  position: relative;
+  z-index: 2;
+  justify-content: center;
+}
+      
+/* Diagonal slant edge */
+.va-left::after {
+  content: '';
+  position: absolute;
+  top: -20px;
+  right: -48px;
+  width: 96px;
+  height: calc(100% + 40px);
+  background: #ffffff;
+  transform: skewX(-4deg);
+  z-index: 1;
+}
+
+.va-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #16a34a;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.va-eyebrow::before {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 2px;
+  background: #16a34a;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.va-title {
+  font-size: clamp(34px, 3.5vw, 52px);
+  font-weight: 800;
+  line-height: 1.06;
+  letter-spacing: -1.8px;
+  color: #0a1a10;
+  margin: 0;
+}
+
+.va-title span {
+  display: block;
+  background: linear-gradient(90deg, #16a34a 0%, #22c55e 55%, #4ade80 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  padding-bottom: 0.15em;
+}
+
+.va-desc {
+  font-size: 15px;
+  color: #4b6358;
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* ── Feature cards ── */
+.va-features {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.va-feature {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 18px 20px;
+  background: #ffffff;
+  border: 1px solid #d1ead9;
+  border-radius: 14px;
+  box-shadow: 0 2px 10px rgba(16, 40, 28, 0.05);
+  transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+}
+
+.va-feature:hover {
+  border-color: #86efac;
+  box-shadow: 0 8px 24px rgba(34, 197, 94, 0.1);
+  transform: translateY(-2px);
+}
+
+.va-feature-icon {
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 11px;
+  background: rgba(22, 163, 74, 0.1);
+  border: 1px solid rgba(22, 163, 74, 0.2);
+  display: grid;
+  place-items: center;
+  color: #16a34a;
+}
+
+.va-feature-icon svg { width: 19px; height: 19px; }
+
+.va-feature-body h4 {
+  margin: 0 0 4px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #0a1a10;
+}
+
+.va-feature-body p {
+  margin: 0;
+  font-size: 13px;
+  color: #5a7a6a;
+  line-height: 1.6;
+}
+
+/* ── Note callout ── */
+.va-note {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 14px 18px;
+  background: rgba(22, 163, 74, 0.06);
+  border-left: 3px solid #22c55e;
+  border-radius: 0 10px 10px 0;
+  font-size: 13px;
+  color: #2d5a42;
+  line-height: 1.65;
+}
+
+.va-note-icon { flex-shrink: 0; color: #16a34a; margin-top: 2px; }
+
+/* ══════════════════════════════
+   RIGHT — Image card
+══════════════════════════════ */
+.va-right {
+  position: relative;
+  overflow: hidden;
+  min-height: 660px;
+  display: flex;
+  flex-direction: column;
+}
+
+.va-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+}
+
+.va-right-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    140deg,
+    rgba(4, 22, 12, 0.82) 0%,
+    rgba(4, 22, 12, 0.62) 50%,
+    rgba(4, 22, 12, 0.78) 100%
+  );
+  z-index: 1;
+}
+
+.va-right-inner {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  padding: 48px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+/* ── Right header ── */
+.va-right-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.va-right-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #4ade80;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.va-right-eyebrow::before {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 2px;
+  background: #4ade80;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.va-right-title {
+  font-size: clamp(22px, 2.2vw, 30px);
+  font-weight: 800;
+  letter-spacing: -0.8px;
+  color: #fff;
+  margin: 0;
+  line-height: 1.1;
+  margin-left: 40PX;
+}
+
+/* ── Office cards ── */
+.va-offices {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  flex: 1;
+}
+
+.va-office-card {
+  display: grid;
+  grid-template-columns: 26px 1fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 13px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 11px;
+  backdrop-filter: blur(10px);
+  transition: border-color 0.25s, background 0.25s, transform 0.25s;
+  cursor: default;
+  margin-left: 40PX;
+}
+
+.va-office-card:hover {
+  border-color: rgba(74, 222, 128, 0.4);
+  background: rgba(34, 197, 94, 0.1);
+  transform: translateX(4px);
+}
+
+.va-office-index {
+  font-size: 10px;
+  font-weight: 800;
+  color: #4ade80;
+  letter-spacing: 1px;
+}
+
+.va-office-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.va-office-region {
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.va-office-name {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.va-office-tag {
+  font-size: 10px;
+  font-weight: 600;
+  color: #4ade80;
+  background: rgba(34, 197, 94, 0.12);
+  border: 1px solid rgba(34, 197, 94, 0.22);
+  border-radius: 100px;
+  padding: 3px 10px;
+  white-space: nowrap;
+}
+
+/* ── Stat row ── */
+.va-stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.va-stat-box {
+  padding: 16px 12px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  transition: border-color 0.25s, background 0.25s, transform 0.25s;
+}
+
+.va-stat-box:hover {
+  border-color: rgba(74, 222, 128, 0.35);
+  background: rgba(34, 197, 94, 0.08);
+  transform: translateY(-2px);
+}
+
+.va-stat-box-value {
+  font-size: 22px;
+  font-weight: 800;
+  color: #4ade80;
+  letter-spacing: -0.5px;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+
+.va-stat-box-label {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.5);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .va-container {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .va-left {
+    padding: 70px 6vw 60px;
+  }
+  .va-left::after { display: none; }
+  .va-right {
+    min-height: 560px;
+  }
+}
+
+@media (max-width: 640px) {
+  .va-section { padding: 70px 0 80px; }
+  .va-container { padding: 0 16px; }
+  .va-office-tag { display: none; }
+  .va-office-card { grid-template-columns: 26px 1fr; }
+  .va-stats-row { grid-template-columns: 1fr 1fr; }
+}
