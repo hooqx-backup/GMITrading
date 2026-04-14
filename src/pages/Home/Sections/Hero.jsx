@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function Hero(){
   const image = 'https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1600&q=80'
@@ -28,7 +29,7 @@ export default function Hero(){
         </h1>
         <p>{content.subtitle}</p>
         <div style={{marginTop:20}}>
-          <a href="/contact" className="cta primary">{content.cta}</a>
+          <Link to="/contact" className="cta primary">{content.cta}</Link>
         </div>
       </div>
     </div>
