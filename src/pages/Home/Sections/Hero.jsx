@@ -8,7 +8,7 @@ export default function Hero(){
     "eyebrow": "Feeding Progress, Delivering Quality",
     "title": [
       "Tech powered distribution of soft commodities to 10,000+",
-      "UAE based retail, wholesale & HORECA customers."
+      "UAE based retail, wholesale & HORECA customers are served."
     ],
     "subtitle": "Trusted distribution and warehousing with digital-first tools for real-time stock, pricing and delivery tracking.",
     "cta": "GET IN TOUCH"
