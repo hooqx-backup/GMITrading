@@ -1,13 +1,13 @@
-import React from 'react'
-import ContactInfo from './Sections/ContactInfo'
+import Hero from './Sections/Hero'
+import ContactForm from './Sections/ContactForm'
 import Locations from './Sections/Locations'
 
-export default function ContactPage(){
+export default function ContactPage() {
   return (
-    <section>
-      <h1>Contact</h1>
-      <ContactInfo />
+    <>
+      <Hero />
+      <ContactForm />
       <Locations />
-    </section>
+    </>
   )
 }

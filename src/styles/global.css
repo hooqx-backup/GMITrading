@@ -201,7 +201,7 @@ footer{border-top:1px solid #eee;padding:24px 0;background:#fafafa}
 .muted{color:var(--muted)}
 
 /* site footer (dark) */
-.site-footer{background:var(--nav-bg);color:#fff;padding:48px 0;margin-top:32px;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;width:100vw;position:relative}
+.site-footer{background:var(--nav-bg);color:#fff;padding:48px 0;margin-top:0;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw;width:100vw;position:relative}
 .site-footer a{color:rgba(255,255,255,0.95);text-decoration:none}
 .site-footer .footer-grid{display:flex;gap:36px;align-items:flex-start;max-width:var(--container);margin:0 auto;padding:0 16px}
 .site-footer .footer-col{flex:1}

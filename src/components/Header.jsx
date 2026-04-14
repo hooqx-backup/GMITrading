@@ -6,6 +6,7 @@ export default function Header(){
     {to: '/', label:'Home'},
     {to: '/about', label:'About'},
     {to: '/products', label:'Products'},
+    {to: '/services', label:'Services'},
     {to: '/contact', label:'Contact'},
   ]
 
