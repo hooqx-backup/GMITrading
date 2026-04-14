@@ -1,0 +1,133 @@
+/* ─── Global Button System ──────────────────────────────────────────
+   Variants : primary | ghost | outline-white | dark
+   Sizes    : sm | md (default) | lg
+   Modifiers: full (100% width)
+──────────────────────────────────────────────────────────────────── */
+
+/* ── Base ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  border-radius: 8px;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  letter-spacing: 0.2px;
+  transition:
+    background    0.22s ease,
+    border-color  0.22s ease,
+    color         0.22s ease,
+    transform     0.22s ease,
+    box-shadow    0.22s ease;
+  /* prevent double-tap zoom on mobile */
+  touch-action: manipulation;
+  user-select: none;
+}
+.btn:focus-visible {
+  outline: 2px solid #4ade80;
+  outline-offset: 3px;
+}
+.btn svg {
+  flex-shrink: 0;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.btn:hover svg.btn-icon-right  { transform: translateX(4px) }
+.btn:hover svg.btn-icon-left   { transform: translateX(-4px) }
+.btn:disabled {
+  opacity: 0.48;
+  pointer-events: none;
+}
+
+/* ── Sizes ── */
+.btn-sm {
+  padding: 8px 16px;
+  font-size: 12px;
+  border-radius: 6px;
+}
+.btn-md {
+  padding: 12px 24px;
+  font-size: 14px;
+}
+.btn-lg {
+  padding: 15px 32px;
+  font-size: 15px;
+  border-radius: 10px;
+}
+
+/* ── Full width ── */
+.btn-full { width: 100% }
+
+/* ─────────────────────────────────────────────────────────────────── */
+/* ── Variant: primary ── green filled                                */
+/* ─────────────────────────────────────────────────────────────────── */
+.btn-primary {
+  background: var(--cta, #1f7a5a);
+  color: #fff;
+  border: 1.5px solid transparent;
+  box-shadow: 0 4px 18px rgba(31, 122, 90, 0.38);
+}
+.btn-primary:hover {
+  background: #22906a;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(31, 122, 90, 0.50);
+}
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 10px rgba(31, 122, 90, 0.35);
+}
+
+/* ─────────────────────────────────────────────────────────────────── */
+/* ── Variant: ghost ── transparent, green border (light bg)         */
+/* ─────────────────────────────────────────────────────────────────── */
+.btn-ghost {
+  background: transparent;
+  color: var(--cta, #1f7a5a);
+  border: 1.5px solid rgba(31, 122, 90, 0.3);
+}
+.btn-ghost:hover {
+  background: rgba(31, 122, 90, 0.06);
+  border-color: var(--cta, #1f7a5a);
+}
+.btn-ghost:active {
+  background: rgba(31, 122, 90, 0.12);
+}
+
+/* ─────────────────────────────────────────────────────────────────── */
+/* ── Variant: outline-white ── transparent, white border (dark bg)  */
+/* ─────────────────────────────────────────────────────────────────── */
+.btn-outline-white {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.88);
+  border: 1.5px solid rgba(255, 255, 255, 0.32);
+}
+.btn-outline-white:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.72);
+  color: #fff;
+}
+.btn-outline-white:active {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+/* ─────────────────────────────────────────────────────────────────── */
+/* ── Variant: dark ── deep green filled (on light/section bg)       */
+/* ─────────────────────────────────────────────────────────────────── */
+.btn-dark {
+  background: #144b38;
+  color: #fff;
+  border: 1.5px solid transparent;
+}
+.btn-dark:hover {
+  background: #1a5c44;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(20, 75, 56, 0.35);
+}
+.btn-dark:active {
+  transform: translateY(0);
+}
+/* ─────────────────────────────────────────────────────────────────── */

@@ -1,0 +1,324 @@
+/* ─── GMI Header / Navbar ──────────────────────────────────────────── */
+header { background: transparent; border: 0 }
+
+.gmi-header {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--nav-bg);
+  width: 100%;
+  transition: box-shadow 0.3s ease, background 0.3s ease;
+}
+.gmi-header--scrolled {
+  background: rgba(23, 75, 54, 0.97);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.22);
+}
+
+.gmi-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+/* ── Logo ── */
+.gmi-logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.gmi-logo-img {
+  height: 32px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
+/* ── Desktop nav links ── */
+.gmi-nav { display: flex; align-items: center; gap: 4px }
+
+.gmi-nav-link {
+  position: relative;
+  color: rgba(255, 255, 255, 0.82);
+  text-decoration: none;
+  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 6px;
+  transition: color 0.2s ease;
+  overflow: hidden;
+}
+.gmi-nav-link:hover { color: #fff }
+.gmi-nav-link--active { color: #fff; font-weight: 600 }
+
+/* animated underline bar */
+.gmi-nav-link-bar {
+  position: absolute;
+  bottom: 4px; left: 14px; right: 14px;
+  height: 2px; border-radius: 2px;
+  background: rgba(255, 255, 255, 0.85);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.gmi-nav-link:hover .gmi-nav-link-bar,
+.gmi-nav-link--active .gmi-nav-link-bar { transform: scaleX(1) }
+
+/* ── CTA pill ── */
+.gmi-nav-cta {
+  margin-left: 12px;
+  padding: 9px 20px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 50px;
+  border: 1.5px solid rgba(255, 255, 255, 0.28);
+  transition: background 0.2s ease, border-color 0.2s ease,
+              transform 0.2s ease, box-shadow 0.2s ease;
+  white-space: nowrap;
+}
+.gmi-nav-cta:hover {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.55);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+}
+
+/* ── Hamburger button ── */
+.gmi-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px; height: 40px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  cursor: pointer; padding: 0;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+.gmi-hamburger:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.gmi-ham-bar {
+  display: block;
+  width: 18px; height: 2px;
+  background: #fff; border-radius: 2px;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.25s ease,
+              width 0.25s ease;
+  transform-origin: center;
+}
+/* morph to × when open */
+.gmi-hamburger--open .gmi-ham-bar--top { transform: translateY(7px) rotate(45deg) }
+.gmi-hamburger--open .gmi-ham-bar--mid { opacity: 0; transform: scaleX(0) }
+.gmi-hamburger--open .gmi-ham-bar--bot { transform: translateY(-7px) rotate(-45deg) }
+
+/* ── Mobile backdrop overlay ── */
+.gmi-mobile-overlay {
+  display: none;
+  position: fixed; inset: 0; z-index: 98;
+  background: rgba(0, 0, 0, 0);
+  transition: background 0.4s ease;
+  pointer-events: none;
+}
+.gmi-mobile-overlay--visible {
+  background: rgba(0, 0, 0, 0.6);
+  pointer-events: auto;
+}
+
+/* ── Mobile drawer — full-screen premium ── */
+.gmi-mobile-nav {
+  position: fixed;
+  inset: 0;
+  z-index: 101;
+  background: #061a0e;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform: translateX(-100%);
+  transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+}
+.gmi-mobile-nav--open { transform: translateX(0) }
+
+/* background grid texture */
+.gmi-mobile-nav::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(34,197,94,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34,197,94,0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* large decorative glow */
+.gmi-mobile-nav::after {
+  content: '';
+  position: absolute;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(34,197,94,0.12) 0%, transparent 65%);
+  bottom: -100px; right: -100px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Top bar inside drawer ── */
+.gmi-mobile-nav-top {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px 36px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+.gmi-mobile-logo {
+  height: 28px;
+  width: auto;
+  opacity: 0.9;
+}
+
+.gmi-mobile-close {
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  display: grid; place-items: center;
+  cursor: pointer;
+  color: #fff;
+  transition: background 0.2s, border-color 0.2s;
+}
+.gmi-mobile-close:hover {
+  background: rgba(34,197,94,0.15);
+  border-color: rgba(34,197,94,0.4);
+}
+.gmi-mobile-close svg { width: 18px; height: 18px; }
+
+/* ── Nav links ── */
+.gmi-mobile-nav-inner {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px 28px 28px;
+  gap: 0;
+}
+
+.gmi-mobile-link {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  text-decoration: none;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  opacity: 0;
+  transform: translateX(-24px);
+  transition:
+    opacity 0.4s ease calc(var(--i) * 0.07s + 0.1s),
+    transform 0.4s cubic-bezier(0.16,1,0.3,1) calc(var(--i) * 0.07s + 0.1s),
+    border-color 0.2s ease;
+}
+.gmi-mobile-nav--open .gmi-mobile-link {
+  opacity: 1; transform: translateX(0);
+}
+.gmi-mobile-link:hover { border-color: rgba(34,197,94,0.25); }
+
+.gmi-mobile-link-num {
+  font-size: 11px;
+  font-weight: 800;
+  color: #4ade80;
+  letter-spacing: 1px;
+  min-width: 24px;
+  opacity: 0.7;
+}
+
+.gmi-mobile-link-label {
+  font-size: 26px;
+  font-weight: 800;
+  color: rgba(255,255,255,0.75);
+  letter-spacing: -1.5px;
+  line-height: 1;
+  transition: color 0.2s ease, letter-spacing 0.2s ease;
+}
+.gmi-mobile-link:hover .gmi-mobile-link-label,
+.gmi-mobile-link--active .gmi-mobile-link-label {
+  color: #fff;
+  letter-spacing: -1px;
+}
+
+.gmi-mobile-link-arrow {
+  margin-left: auto;
+  color: rgba(255,255,255,0.2);
+  transition: color 0.2s, transform 0.2s;
+}
+.gmi-mobile-link:hover .gmi-mobile-link-arrow {
+  color: #4ade80;
+  transform: translateX(4px);
+}
+.gmi-mobile-link-arrow svg { width: 20px; height: 20px; }
+
+/* ── CTA + footer ── */
+.gmi-mobile-footer {
+  position: relative;
+  z-index: 1;
+  padding: 20px 28px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.4s ease 0.42s,
+    transform 0.4s ease 0.42s;
+}
+.gmi-mobile-nav--open .gmi-mobile-footer {
+  opacity: 1; transform: translateY(0);
+}
+
+.gmi-mobile-cta {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  padding: 16px 0;
+  background: #22c55e;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 14px;
+  letter-spacing: 0.3px;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 8px 24px rgba(34,197,94,0.3);
+}
+.gmi-mobile-cta:hover {
+  background: #16a34a;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(34,197,94,0.4);
+}
+
+.gmi-mobile-tagline {
+  text-align: center;
+  font-size: 12px;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.5px;
+}
+
+/* ── Responsive breakpoint ── */
+@media (max-width: 768px) {
+  .gmi-nav { display: none }
+  .gmi-hamburger { display: flex }
+  .gmi-mobile-overlay { display: block }
+}
+/* ─────────────────────────────────────────────────────────────────── */
