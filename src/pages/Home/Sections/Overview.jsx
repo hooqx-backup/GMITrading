@@ -12,8 +12,13 @@ export default function Overview(){
     ],
     stat: '26,000+',
     cards: [
+<<<<<<< HEAD
       {title:’Vision’, text:"To become the region’s most trusted, tech enabled launchpad for food brands.", color:’#f5efe2’},
       {title:’Mission’, text:"To become the region’s most trusted, tech enabled launchpad for food brands.", color:’#183f33’, light:false}
+=======
+      {title:'Vision', text:"To be the UAE's leading tech-enabled food distribution powerhouse, connecting global supply chains with local markets.", color:'#f5efe2'},
+      {title:'Mission', text:"To become the region's most trusted, tech-enabled launchpad for food brands.", color:'#183f33', light:false}
+>>>>>>> 9f1a94a88971edbf29b529effe2a92b8489be73b
     ]
   }
 
