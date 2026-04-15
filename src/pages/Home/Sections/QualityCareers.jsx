@@ -1,43 +1,187 @@
-import React from 'react'
+import React, { useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
+import '../../../styles/QualityCareers.css'
+// Replace with your actual image path
+import qualityImg from '../../../assets/images/quality.png'
 
-export default function QualityCareers(){
-  const leftImg = 'https://images.unsplash.com/photo-1506806732259-39c2d0268443?auto=format&fit=crop&w=900&q=80'
-  const qa = [
-    'Goal to have HACCP compliant facilities and ISO 22000 food safety certification.',
-    'End to end batch traceability through in house digital ledger.',
-    'Commitment to reducing food miles and post harvest losses by integrating regional storage nodes.'
-  ]
-  const careers = [
-    'We hire thinkers, doers and dreamers who believe food distribution can be smarter and more sustainable.',
-    'Explore opportunities in sales, logistics, packaging, data science & technology.'
+// Smoother, ultra-premium easing curve
+const PREMIUM_EASE = [0.22, 1, 0.36, 1]
+
+const fadeUpVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: (i = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 1, ease: PREMIUM_EASE, delay: i * 0.15 }
+  })
+}
+
+const PieChart = ({ percentage, label, color = 'var(--qc-accent)' }) => {
+  const radius = 36
+  const circumference = 2 * Math.PI * radius
+  const strokeDashoffset = circumference - (percentage / 100) * circumference
+
+  return (
+    <div className="qc-pie-item">
+      <div className="qc-pie-wrapper">
+        <svg width="88" height="88" viewBox="0 0 100 100" style={{ filter: 'drop-shadow(0px 4px 8px rgba(17, 94, 65, 0.15))' }}>
+          {/* Background Track */}
+          <circle
+            cx="50" cy="50" r={radius}
+            fill="transparent"
+            stroke="var(--qc-surface-alt)"
+            strokeWidth="6"
+          />
+          {/* Animated Progress */}
+          <motion.circle
+            cx="50" cy="50" r={radius}
+            fill="transparent"
+            stroke={color}
+            strokeWidth="6"
+            strokeDasharray={circumference}
+            initial={{ strokeDashoffset: circumference }}
+            whileInView={{ strokeDashoffset }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 1.8, ease: PREMIUM_EASE, delay: 0.6 }}
+            strokeLinecap="round"
+            transform="rotate(-90 50 50)"
+          />
+          {/* Center Text */}
+          <text
+            x="50%" y="50%"
+            dominantBaseline="middle" textAnchor="middle"
+            className="qc-pie-text"
+          >
+            {percentage}%
+          </text>
+        </svg>
+      </div>
+      <span className="qc-pie-label">{label}</span>
+    </div>
+  )
+}
+
+export default function QualityCareers() {
+  const containerRef = useRef(null)
+  const isInView = useInView(containerRef, { once: true, amount: 0.15 })
+
+  const features = [
+    {
+      title: 'Food Safety Leadership',
+      desc: 'HACCP compliant facilities and ISO 22000 certification across all regional hubs.',
+      icon: (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <path d="M12 2L3 7v9c0 5 9 8 9 8s9-3 9-8V7l-9-5z" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M9 12l2 2 4-4" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      )
+    },
+    {
+      title: 'Digital Ledger Traceability',
+      desc: 'End-to-end batch traceability through our proprietary ledger, ensuring total transparency.',
+      icon: (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <rect x="4" y="4" width="16" height="16" rx="2" ry="2" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M8 10h8M8 14h8" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      )
+    },
+    {
+      title: 'Sustainable Infrastructure',
+      desc: 'Regional storage nodes reduce post-harvest losses and minimize food miles by 40%.',
+      icon: (
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+          <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      )
+    }
   ]
 
   return (
-    <section className="qc-section">
-      <div className="container qc-grid">
-        <div className="qc-left" style={{backgroundImage:`url(${leftImg})`}} />
+    <section className="qc-section" ref={containerRef}>
+      {/* Decorative ambient background glows */}
+      <div className="qc-ambient-glow glow-1" />
+      <div className="qc-ambient-glow glow-2" />
 
-        <div className="qc-center">
-          <h3>Quality & Sustainability</h3>
-          <ul>
-            {qa.map((t,i)=> <li key={i}>{t}</li>)}
-          </ul>
+      <div className="qc-container">
+        <div className="qc-layout">
+          
+          {/* Content Side */}
+          <div className="qc-content">
+            <motion.div 
+              className="qc-header"
+              initial="hidden"
+              animate={isInView ? "visible" : "hidden"}
+              variants={fadeUpVariants}
+              custom={0}
+            >
+              <div className="qc-eyebrow">
+                <span className="qc-line" />
+                <span>Our Philosophy</span>
+              </div>
+              <h2 className="qc-title">
+                Quality Without <br/>
+                <span className="qc-text-gradient">Compromise.</span>
+              </h2>
+              <p className="qc-description">
+                At GMI Trading, we believe that world-class quality starts at the farm and ends with a delighted consumer. Our commitment to sustainability drives every logistic decision we make.
+              </p>
+            </motion.div>
 
-          <h3 style={{marginTop:24}}>Careers & Culture</h3>
-          <ul>
-            {careers.map((t,i)=> <li key={i}>{t}</li>)}
-          </ul>
-        </div>
-
-        <div className="qc-right">
-          <div className="stat">
-            <div className="circle"><span>83%</span></div>
-            <div className="label">Sustainability Score</div>
+            <div className="qc-features">
+              {features.map((feature, i) => (
+                <motion.div 
+                  className="qc-feature-card"
+                  key={i}
+                  custom={i + 2}
+                  initial="hidden"
+                  animate={isInView ? "visible" : "hidden"}
+                  variants={fadeUpVariants}
+                  whileHover={{ y: -4, transition: { duration: 0.3, ease: 'easeOut' } }}
+                >
+                  <div className="qc-icon-box">
+                    {feature.icon}
+                  </div>
+                  <div className="qc-feature-content">
+                    <h4>{feature.title}</h4>
+                    <p>{feature.desc}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
-          <div className="stat">
-            <div className="circle small"><span>60%</span></div>
-            <div className="label">Employee Growth</div>
+
+          {/* Visual Side */}
+          <div className="qc-visual">
+            <motion.div 
+              className="qc-image-wrapper"
+              initial={{ opacity: 0, scale: 0.92, filter: 'blur(10px)' }}
+              animate={isInView ? { opacity: 1, scale: 1, filter: 'blur(0px)' } : {}}
+              transition={{ duration: 1.4, ease: PREMIUM_EASE, delay: 0.2 }}
+            >
+              <div className="qc-image-overlay" />
+              <img 
+                src={qualityImg} 
+                alt="Quality Assurance Operations" 
+                className="qc-main-img" 
+              />
+            </motion.div>
+
+            {/* Premium Glassmorphic Floating Card */}
+            <motion.div 
+              className="qc-glass-card"
+              initial={{ opacity: 0, y: 50, x: 20 }}
+              animate={isInView ? { opacity: 1, y: 0, x: 0 } : {}}
+              transition={{ duration: 1.2, ease: PREMIUM_EASE, delay: 0.8 }}
+            >
+              <div className="qc-pies-container">
+                <PieChart percentage={83} label="Sustainability" />
+                <div className="qc-divider-vertical" />
+                <PieChart percentage={60} label="Emp. Growth" />
+              </div>
+            </motion.div>
           </div>
+
         </div>
       </div>
     </section>

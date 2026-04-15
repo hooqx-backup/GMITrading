@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import bannerWebm from '../../../assets/videos/banner_video.webm'
 import Button from '../../../components/Button'
 import '../../../styles/Hero.css'
 
 /* ── per-word title reveal ── */
-// Each line is overflow:hidden; each word slides up with --w index delay
 const titleLines = [
   [
     { text: 'Tech-powered', accent: false },
@@ -28,7 +28,7 @@ function TitleLines() {
     <>
       {titleLines.map((line, li) => (
         <span key={li} className="hero-title-line">
-          {line.map((w) => {
+          {line.map((w, wi_in_line) => {
             const wi = wordIndex++
             return (
               <span
@@ -56,7 +56,6 @@ function useCountUp(target, duration = 1800, startDelay = 600) {
       const start = performance.now()
       const tick = (now) => {
         const progress = Math.min((now - start) / duration, 1)
-        // ease-out expo
         const eased = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress)
         setValue(Math.round(eased * target))
         if (progress < 1) rafRef.current = requestAnimationFrame(tick)
@@ -72,7 +71,6 @@ function useCountUp(target, duration = 1800, startDelay = 600) {
 
 /* ── stat item with counter ── */
 function StatItem({ num, label, delay }) {
-  // parse e.g. "10,000+" → 10000, suffix "+"
   const raw    = num.replace(/,/g, '')
   const numVal = parseInt(raw, 10)
   const suffix = raw.replace(/\d/g, '')
@@ -83,25 +81,41 @@ function StatItem({ num, label, delay }) {
     : count.toLocaleString() + suffix
 
   return (
-    <div className="hero-stat">
+    <motion.div 
+      className="hero-stat"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: delay / 1000 }}
+    >
       <span className="hero-stat-num">{display}</span>
       <span className="hero-stat-label">{label}</span>
-    </div>
+    </motion.div>
   )
 }
 
 const stats = [
-  { num: '10,000+', label: 'Customers Served',   delay: 700 },
-  { num: '15+',     label: 'Years of Excellence', delay: 850 },
-  { num: '500+',    label: 'Product SKUs',         delay: 1000 },
+  { num: '10,000+', label: 'Customers Served',   delay: 1500 },
+  { num: '15+',     label: 'Years of Excellence', delay: 1650 },
+  { num: '500+',    label: 'Product SKUs',         delay: 1800 },
 ]
 
 export default function Hero() {
+  const sectionRef = useRef(null)
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"]
+  })
+
+  const videoY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"])
+  const videoScale = useTransform(scrollYProgress, [0, 1], [1, 1.1])
+  const contentY = useTransform(scrollYProgress, [0, 1], ["0px", "150px"])
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
+
   return (
-    <section className="hero-section">
+    <section className="hero-section" ref={sectionRef}>
 
       {/* ── Video background ── */}
-      <div className="hero-video-wrap">
+      <motion.div className="hero-video-wrap" style={{ y: videoY, scale: videoScale }}>
         <video
           className="hero-video"
           autoPlay
@@ -114,26 +128,42 @@ export default function Hero() {
           <source src={bannerWebm} type="video/webm" />
         </video>
         <div className="hero-overlay" />
-      </div>
+      </motion.div>
 
       {/* ── Content ── */}
-      <div className="hero-content">
+      <motion.div className="hero-content" style={{ y: contentY, opacity: contentOpacity }}>
 
-        <div className="hero-eyebrow">
+        <motion.div 
+          className="hero-eyebrow"
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
           <span className="hero-eyebrow-dot" />
           Feeding Progress, Delivering Quality
-        </div>
+        </motion.div>
 
         <h1 className="hero-title">
-          <TitleLines /></h1>
+          <TitleLines />
+        </h1>
 
-        <p className="hero-subtitle">
+        <motion.p 
+          className="hero-subtitle"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+        >
           Trusted distribution and warehousing with digital-first tools for
           real-time stock, pricing and delivery tracking — serving retail,
           wholesale &amp; HORECA.
-        </p>
+        </motion.p>
 
-        <div className="hero-actions">
+        <motion.div 
+          className="hero-actions"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.1 }}
+        >
           <Button
             to="/contact"
             variant="primary"
@@ -149,21 +179,22 @@ export default function Hero() {
           <Button to="/about" variant="outline-white" size="md">
             Learn More
           </Button>
-        </div>
+        </motion.div>
+      </motion.div>
 
-        <div className="hero-stats">
-          {stats.map((s) => (
-            <StatItem key={s.label} {...s} />
-          ))}
-        </div>
+      {/* ── Stats ── */}
+      <div className="hero-stats">
+        {stats.map((s, i) => (
+          <StatItem key={i} {...s} />
+        ))}
       </div>
 
-      {/* ── Scroll cue ── */}
-      <div className="hero-scroll">
-        <div className="hero-scroll-mouse">
-          <span className="hero-scroll-wheel" />
-        </div>
-        <span className="hero-scroll-label">Scroll</span>
+      <div className="hero-scroll-indicator">
+        <motion.div 
+          className="hero-scroll-line"
+          animate={{ y: [0, 24, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        />
       </div>
 
     </section>

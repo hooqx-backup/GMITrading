@@ -5,21 +5,21 @@ import '../../../styles/ValueAdded.css'
 
 /* ── Shared animation variants ── */
 const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
-  show:   { opacity: 1, y: 0,  transition: { duration: 1.0, ease: [0.16, 1, 0.3, 1] } },
+  hidden: { opacity: 0, y: 30 },
+  show:   { opacity: 1, y: 0,  transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
 }
 
 const fadeLeft = {
-  hidden: { opacity: 0, x: -36 },
-  show:   { opacity: 1, x: 0,   transition: { duration: 1.0, ease: [0.16, 1, 0.3, 1] } },
+  hidden: { opacity: 0, x: -30 },
+  show:   { opacity: 1, x: 0,   transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
 }
 
 const fadeRight = {
-  hidden: { opacity: 0, x: 36 },
-  show:   { opacity: 1, x: 0,   transition: { duration: 1.0, ease: [0.16, 1, 0.3, 1] } },
+  hidden: { opacity: 0, x: 30 },
+  show:   { opacity: 1, x: 0,   transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
 }
 
-const stagger = (delayChildren = 0.15) => ({
+const stagger = (delayChildren = 0.1) => ({
   hidden: {},
   show:   { transition: { staggerChildren: delayChildren } },
 })
