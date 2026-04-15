@@ -242,8 +242,12 @@ function FeaturedCard({ s }) {
       {/* right stat */}
       <div style={{
         flexShrink:0, textAlign:'center', position:'relative', zIndex:1,
-        background:'rgba(255,255,255,0.04)', border:'1px solid rgba(255,255,255,0.08)',
+        background:'rgba(255,255,255,0.06)',
+        backdropFilter:'blur(16px)',
+        WebkitBackdropFilter:'blur(16px)',
+        border:'1px solid rgba(255,255,255,0.12)',
         borderRadius:16, padding:'32px 40px',
+        boxShadow:'inset 0 1px 0 rgba(255,255,255,0.08)',
       }}>
         <div style={{ fontSize:52, fontWeight:800, color:'#2aa05a', lineHeight:1 }}>{s.stat}</div>
         <div style={{ fontSize:12, color:'rgba(255,255,255,0.45)', marginTop:6, letterSpacing:'1px', textTransform:'uppercase' }}>{s.statLabel}</div>
@@ -262,8 +266,10 @@ function ServiceCard({ s, index }) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        background: '#fff',
-        border: `1px solid ${hovered ? s.accent + '50' : '#e8e8e8'}`,
+        background: hovered ? 'rgba(255,255,255,0.88)' : 'rgba(255,255,255,0.62)',
+        backdropFilter: 'blur(16px)',
+        WebkitBackdropFilter: 'blur(16px)',
+        border: `1px solid ${hovered ? s.accent + '45' : 'rgba(255,255,255,0.75)'}`,
         borderRadius: 16,
         padding: '32px 28px 26px',
         display: 'flex',
@@ -277,8 +283,8 @@ function ServiceCard({ s, index }) {
           : 'translateY(40px)',
         opacity: visible ? 1 : 0,
         boxShadow: hovered
-          ? `0 20px 48px rgba(0,0,0,0.10), 0 0 0 1px ${s.accent}22`
-          : '0 2px 16px rgba(0,0,0,0.05)',
+          ? `0 24px 56px rgba(0,0,0,0.12), 0 0 0 1px ${s.accent}22, inset 0 1px 0 rgba(255,255,255,0.95)`
+          : '0 2px 16px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.85)',
         transitionDelay: visible ? `${(index % 3) * 60}ms` : '0ms',
       }}
     >
@@ -392,7 +398,7 @@ export default function ServicesGrid() {
       <div style={{
         position:'relative', left:'50%', right:'50%',
         marginLeft:'-50vw', marginRight:'-50vw',
-        width:'100vw', background:'#ffffff', padding:'88px 0 96px',
+        width:'100vw', background:'linear-gradient(160deg, #f0faf4 0%, #e8f5ee 50%, #f5fdf7 100%)', padding:'88px 0 96px',
       }}>
         <div className="container">
 

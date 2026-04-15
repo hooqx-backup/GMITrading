@@ -38,7 +38,13 @@ export default function StatsStrip() {
                 padding: '28px 20px',
                 textAlign: 'center',
                 borderRight: i < stats.length - 1 ? '1px solid rgba(255,255,255,0.12)' : 'none',
+                background: 'rgba(255,255,255,0.04)',
+                backdropFilter: 'blur(10px)',
+                WebkitBackdropFilter: 'blur(10px)',
+                transition: 'background 0.25s',
               }}
+              onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.08)'}
+              onMouseLeave={e => e.currentTarget.style.background = 'rgba(255,255,255,0.04)'}
             >
               <div style={{ fontSize: 32, fontWeight: 700, color: '#2aa05a', lineHeight: 1 }}>{s.value}</div>
               <div style={{ color: 'rgba(255,255,255,0.75)', fontSize: 13, marginTop: 6 }}>{s.label}</div>

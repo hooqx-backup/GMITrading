@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 
 /* Floating particle canvas */
@@ -106,21 +106,14 @@ export default function Hero() {
     <div
       className="hero-visual full-width"
       style={{
-        backgroundImage: `url(${image})`,
+        backgroundImage: `linear-gradient(135deg, rgba(10,35,22,0.82) 0%, rgba(23,75,54,0.70) 60%, rgba(9,20,15,0.80) 100%), url(${image})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        height: 'auto',
         minHeight: 620,
         overflow: 'hidden',
       }}
     >
-      {/* extra dark-green gradient tint */}
-      <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          background:
-            'linear-gradient(135deg, rgba(10,35,22,0.72) 0%, rgba(23,75,54,0.55) 60%, rgba(9,20,15,0.65) 100%)',
-          zIndex: 1,
-        }}
-      />
 
       {/* animated particle network */}
       <ParticleCanvas />
@@ -142,7 +135,7 @@ export default function Hero() {
       />
 
       {/* content */}
-      <div className="hero-inner" style={{ position: 'relative', zIndex: 3 }}>
+      <div className="hero-inner" style={{ position: 'relative', zIndex: 3, maxWidth: 'var(--container)', margin: '0 auto', padding: '56px 24px', width: '100%' }}>
         {/* eyebrow pill */}
         <div
           style={{

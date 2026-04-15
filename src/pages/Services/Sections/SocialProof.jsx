@@ -105,11 +105,13 @@ export default function SocialProof() {
               ref={quoteRef}
               style={{
                 flex: '1 1 420px',
-                background: 'linear-gradient(145deg, #ffffff 0%, #f0faf5 60%, #e6f7ee 100%)',
-                border: '1.5px solid rgba(42,160,90,0.2)',
+                background: 'rgba(255,255,255,0.65)',
+                backdropFilter: 'blur(20px)',
+                WebkitBackdropFilter: 'blur(20px)',
+                border: '1.5px solid rgba(255,255,255,0.8)',
                 borderRadius: 20,
                 padding: '40px 40px 36px',
-                boxShadow: '0 4px 32px rgba(42,160,90,0.1), 0 1px 4px rgba(0,0,0,0.05)',
+                boxShadow: '0 8px 40px rgba(42,160,90,0.1), inset 0 1px 0 rgba(255,255,255,0.95)',
                 display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
                 opacity: quoteVisible ? 1 : 0,
                 transform: quoteVisible ? 'translateY(0)' : 'translateY(32px)',
@@ -167,18 +169,15 @@ export default function SocialProof() {
               {STATS.map((s, i) => (
                 <div key={i} style={{
                   flex: 1,
-                  background: i === 0
-                    ? 'linear-gradient(135deg, #ffffff 0%, #e8f9f0 100%)'
-                    : i === 1
-                    ? 'linear-gradient(135deg, #ffffff 0%, #eaf6ff 100%)'
-                    : 'linear-gradient(135deg, #ffffff 0%, #f3eeff 100%)',
-                  border: '1.5px solid',
-                  borderColor: i === 0 ? 'rgba(42,160,90,0.25)' : i === 1 ? 'rgba(26,127,181,0.25)' : 'rgba(124,58,237,0.25)',
+                  background: 'rgba(255,255,255,0.62)',
+                  backdropFilter: 'blur(16px)',
+                  WebkitBackdropFilter: 'blur(16px)',
+                  border: '1.5px solid rgba(255,255,255,0.78)',
                   boxShadow: i === 0
-                    ? '0 4px 20px rgba(42,160,90,0.1)'
+                    ? '0 6px 24px rgba(42,160,90,0.1), inset 0 1px 0 rgba(255,255,255,0.9)'
                     : i === 1
-                    ? '0 4px 20px rgba(26,127,181,0.1)'
-                    : '0 4px 20px rgba(124,58,237,0.1)',
+                    ? '0 6px 24px rgba(26,127,181,0.1), inset 0 1px 0 rgba(255,255,255,0.9)'
+                    : '0 6px 24px rgba(124,58,237,0.1), inset 0 1px 0 rgba(255,255,255,0.9)',
                   borderRadius: 16, padding: '24px 24px',
                   display: 'flex', flexDirection: 'column', justifyContent: 'center',
                   position: 'relative', overflow: 'hidden',
@@ -231,9 +230,11 @@ export default function SocialProof() {
               {CLIENTS.map((c, i) => (
                 <div key={i} style={{
                   display: 'flex', alignItems: 'center', gap: 10,
-                  background: '#fff',
-                  border: '1.5px solid #e2e8f0',
-                  boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
+                  background: 'rgba(255,255,255,0.6)',
+                  backdropFilter: 'blur(12px)',
+                  WebkitBackdropFilter: 'blur(12px)',
+                  border: '1.5px solid rgba(255,255,255,0.75)',
+                  boxShadow: '0 2px 12px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.85)',
                   borderRadius: 12, padding: '12px 20px',
                   transition: 'border-color 0.25s, background 0.25s',
                   cursor: 'default',

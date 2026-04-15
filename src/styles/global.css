@@ -81,11 +81,11 @@ body{
 }
 
 /* Contact section */
-.contact-section{padding:64px 0;background:#f4fbf8}
+.contact-section{padding:64px 0;background:linear-gradient(135deg,#f0faf4 0%,#e8f5ee 50%,#f5fdf7 100%)}
 .cf-grid{display:flex;gap:32px;align-items:flex-start}
 
 /* Form panel */
-.cf-form-panel{flex:1;background:linear-gradient(135deg,#ffffff 0%,#f0faf5 55%,#e3f5ec 100%);padding:44px;border-radius:16px;box-shadow:0 8px 40px rgba(16,24,32,0.09);border:1px solid rgba(31,122,90,0.08)}
+.cf-form-panel{flex:1;background:rgba(255,255,255,0.65);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:44px;border-radius:16px;box-shadow:0 8px 40px rgba(16,24,32,0.08),inset 0 1px 0 rgba(255,255,255,0.95);border:1px solid rgba(255,255,255,0.82)}
 .cf-form-header{margin-bottom:28px}
 .cf-form-header h2{margin:6px 0 8px;font-size:30px;color:#0f1f18;font-weight:700}
 .cf-form-header .muted{margin:0;font-size:14px}
@@ -102,7 +102,7 @@ body{
 .cf-actions{display:flex;gap:12px;align-items:center;margin-top:8px}
 
 /* Info panel */
-.cf-info-panel{flex:0 0 340px;background:linear-gradient(135deg,#1a5c3f 0%,#174b36 40%,#0e2e20 100%);color:#fff;padding:40px 36px;border-radius:16px;box-shadow:0 8px 40px rgba(16,24,32,0.14)}
+.cf-info-panel{flex:0 0 340px;background:rgba(13,35,24,0.82);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);color:#fff;padding:40px 36px;border-radius:16px;box-shadow:0 8px 40px rgba(16,24,32,0.18),inset 0 1px 0 rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1)}
 .cf-info-panel h3{color:#fff;margin:0 0 12px;font-size:20px}
 .cf-info-desc{color:rgba(255,255,255,0.75);font-size:14px;line-height:1.65;margin:0 0 8px}
 
