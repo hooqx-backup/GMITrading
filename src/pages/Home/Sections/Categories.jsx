@@ -53,9 +53,9 @@ const categories = [
 // Each card animates independently so every scroll in/out re-triggers
 function CategoryCard({ category, index }) {
   const ref = useRef(null)
-  const isInView = useInView(ref, { once: false, amount: 0.3 })
+  const isInView = useInView(ref, { once: true, amount: 0.2 })
 
-  const delay = index * 0.15
+  const delay = index * 0.1
 
   return (
     <motion.div
@@ -66,19 +66,17 @@ function CategoryCard({ category, index }) {
       variants={{
         hidden: {
           opacity: 0,
-          y: 70,
-          scale: 0.88,
-          rotateX: 18,
-          filter: 'blur(8px)',
+          y: 40,
+          scale: 0.95,
+          filter: 'blur(4px)',
         },
         visible: {
           opacity: 1,
           y: 0,
           scale: 1,
-          rotateX: 0,
           filter: 'blur(0px)',
           transition: {
-            duration: 1.05,
+            duration: 0.8,
             delay,
             ease: [0.16, 1, 0.3, 1],
           },
@@ -87,8 +85,9 @@ function CategoryCard({ category, index }) {
     >
       <motion.div
         className="category-card"
-        whileHover={{ y: -18, scale: 1.025 }}
-        transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
+        whileHover={{ y: -12, scale: 1.02 }}
+        whileTap={{ scale: 0.98 }}
+        transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
       >
         <img src={category.image} alt={category.title} className="category-card-bg" />
         <div className="category-card-overlay" />

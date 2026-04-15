@@ -9,6 +9,7 @@ const links = [
   { to: '/products', label: 'Products' },
   { to: '/services', label: 'Services' },
   { to: '/contact', label: 'Contact' },
+  { to: '/services', label: 'Services' }
 ]
 
 const projectDropdown = [

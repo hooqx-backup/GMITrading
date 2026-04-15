@@ -87,17 +87,38 @@
     );
 }
 
+/* ── Scroll indicator ── */
+.hero-scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  right: 50px;
+  width: 1px;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.2);
+  z-index: 5;
+  overflow: hidden;
+}
+
+.hero-scroll-line {
+  width: 100%;
+  height: 30px;
+  background: #ffffff;
+}
+
 /* ── Content ── */
 .hero-content {
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: 1140px;
+  max-width: 1320px;
   margin: 0 auto;
-  padding: 0 24px;
+  height: 100%;
+  padding: 0 32px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: flex-start;
+  perspective: 1000px;
 }
 
 /* ── Eyebrow pill ── */
@@ -119,7 +140,6 @@
   padding: 7px 16px;
   border-radius: 50px;
   margin-bottom: 54px;
-  margin-top: -90px;
   animation: heroFadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 /* shimmer sweep across the pill */
@@ -230,6 +250,11 @@
 
 /* ── Stats strip ── */
 .hero-stats {
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
   display: flex;
   gap: 0;
   animation: heroFadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.52s both;

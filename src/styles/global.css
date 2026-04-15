@@ -1,5 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
 :root{
   --bg:#ffffff;
   --muted:#6b7280;
@@ -40,20 +60,9 @@ body{
 .video-inner{position:relative;padding-bottom:56.25%;height:0;overflow:hidden}
 .video-inner iframe{position:absolute;top:0;left:0;width:100%;height:100%}
 
-/* Projects */
-.projects-section{background:transparent;padding:36px 0}
-.projects-grid{display:flex;gap:28px;justify-content:center}
-.project-card{width:220px}
-.project-img{height:220px;background-size:cover;background-position:center;border-radius:6px}
-.project-card h4{margin:8px 0 0}
-
-@media (max-width:900px){
-  .projects-grid{flex-direction:column;align-items:center}
-  .project-card{width:80%}
-}
 
 /* Quality & Careers section */
-.qc-section{padding:48px 0}
+/* QC Section styling removed in favor of Section-specific CSS */
 .qc-grid{display:flex;gap:32px;align-items:flex-start}
 .qc-left{flex:0 0 36%;height:360px;background-size:cover;background-position:center;border-radius:6px}
 .qc-center{flex:1;text-align:left}

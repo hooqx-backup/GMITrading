@@ -1,7 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import '../../../styles/About.css'
 import aboutSectionImage from '../../../assets/images/about-section.jpg'
+import '../../../styles/About.css'
 
 /* ── SVG Icons ── */
 const IconPin = () => (
@@ -80,21 +80,20 @@ export default function AboutSection() {
       opacity: 1,
       transition: {
         staggerChildren: 0.1,
-        delayChildren: 0.15,
+        delayChildren: 0.1,
         duration: 0.8,
       },
     },
   }
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 40, rotateX: -15 },
+    hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
-      rotateX: 0,
       transition: {
-        duration: 0.85,
-        ease: [0.23, 0.86, 0.39, 0.96],
+        duration: 0.8,
+        ease: [0.16, 1, 0.3, 1],
       },
     },
   }
@@ -102,89 +101,76 @@ export default function AboutSection() {
   const imageVariants = {
     hidden: {
       opacity: 0,
-      y: 50,
-      scale: 0.85,
-      filter: 'blur(12px)',
-      rotateY: -8,
+      x: -40,
+      scale: 0.95,
+      filter: 'blur(10px)',
+      rotateY: -5,
     },
     visible: {
       opacity: 1,
-      y: 0,
+      x: 0,
       scale: 1,
       filter: 'blur(0px)',
       rotateY: 0,
       transition: {
-        duration: 1,
-        ease: [0.23, 0.86, 0.39, 0.96],
+        duration: 1.2,
+        ease: [0.16, 1, 0.3, 1],
       },
     },
   }
 
   const badgeVariants = {
-    hidden: { opacity: 0, scale: 0.6, y: 30 },
+    hidden: { opacity: 0, scale: 0.8, y: 20 },
     visible: {
       opacity: 1,
       scale: 1,
       y: 0,
       transition: {
-        delay: 0.2,
-        duration: 0.7,
-        ease: [0.34, 1.56, 0.64, 1],
+        delay: 0.4,
+        duration: 0.8,
+        ease: [0.16, 1, 0.3, 1],
       },
     },
   }
 
   const titleVariants = {
-    hidden: { opacity: 0, y: 50 },
+    hidden: { opacity: 0, y: 30, skewY: 2 },
     visible: {
       opacity: 1,
       y: 0,
+      skewY: 0,
       transition: {
-        duration: 0.9,
-        ease: [0.17, 0.55, 0.55, 1],
+        duration: 1,
+        ease: [0.16, 1, 0.3, 1],
       },
     },
   }
 
   const textRowVariants = {
-    hidden: { opacity: 0, x: -30, rotateZ: -2 },
+    hidden: { opacity: 0, x: -20 },
     visible: (i) => ({
       opacity: 1,
       x: 0,
-      rotateZ: 0,
       transition: {
-        delay: i * 0.08,
-        duration: 0.75,
-        ease: [0.25, 0.46, 0.45, 0.94],
+        delay: i * 0.1,
+        duration: 0.8,
+        ease: [0.16, 1, 0.3, 1],
       },
     }),
   }
 
   const cardVariants = {
-    hidden: { opacity: 0, y: 50, scale: 0.9 },
+    hidden: { opacity: 0, y: 30, scale: 0.95 },
     visible: (i) => ({
       opacity: 1,
       y: 0,
       scale: 1,
       transition: {
-        delay: i * 0.12,
-        duration: 0.85,
-        ease: [0.23, 0.86, 0.39, 0.96],
+        delay: 0.2 + i * 0.1,
+        duration: 0.8,
+        ease: [0.16, 1, 0.3, 1],
       },
     }),
-    whileHover: {
-      y: -8,
-      scale: 1.02,
-      boxShadow: '0 20px 45px rgba(0,0,0,0.12)',
-      transition: {
-        duration: 0.4,
-        ease: 'easeOut',
-      },
-    },
-    whileTap: {
-      scale: 0.98,
-      transition: { duration: 0.2 },
-    },
   }
 
   return (
@@ -192,7 +178,7 @@ export default function AboutSection() {
       className="about-section"
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: false, margin: '0px 0px -8% 0px' }}
+      viewport={{ once: true, margin: '-10%' }}
       variants={containerVariants}
     >
       <div className="about-inner">
@@ -227,7 +213,7 @@ export default function AboutSection() {
             spices, snacks and energy drinks.
           </motion.p>
 
-          <motion.div className="about-text-list" variants={containerVariants}>
+          <motion.div className="about-text-list">
             {HIGHLIGHTS.map(({ Icon, title, desc }, idx) => (
               <motion.div
                 key={title}
@@ -241,11 +227,12 @@ export default function AboutSection() {
             ))}
           </motion.div>
 
-          <motion.div className="about-stats-row" variants={containerVariants}>
+          <motion.div className="about-stats-row">
             <motion.div
               className="about-stat-card about-stat-card--light"
               variants={cardVariants}
               custom={0}
+              whileHover={{ y: -8, scale: 1.02, transition: { duration: 0.3 } }}
             >
               <IconLeaf />
               <div>
@@ -257,6 +244,7 @@ export default function AboutSection() {
               className="about-stat-card about-stat-card--dark"
               variants={cardVariants}
               custom={1}
+              whileHover={{ y: -8, scale: 1.02, transition: { duration: 0.3 } }}
             >
               <IconRocket />
               <div>

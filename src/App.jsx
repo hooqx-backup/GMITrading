@@ -1,4 +1,7 @@
+import React, { useEffect } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Lenis from 'lenis'
+import 'lenis/dist/lenis.css'
 import './styles/global.css'
 import Layout from './components/Layout'
 import Home from './pages/Home/HomePage'
@@ -11,6 +14,28 @@ import GrainsPackaging from './pages/Projects/GrainsPackagingPage'
 import AvocadoFarming from './pages/Projects/AvocadoFarmingPage'
 
 function App(){
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
+      smoothWheel: true,
+      wheelMultiplier: 1,
+      touchMultiplier: 2,
+      infinite: false,
+    })
+
+    function raf(time) {
+      lenis.raf(time)
+      requestAnimationFrame(raf)
+    }
+
+    requestAnimationFrame(raf)
+
+    return () => {
+      lenis.destroy()
+    }
+  }, [])
+
   return (
     <BrowserRouter>
       <Layout>
