@@ -315,6 +315,128 @@ header { background: transparent; border: 0 }
   letter-spacing: 0.5px;
 }
 
+/* ── Desktop Projects Dropdown ── */
+.gmi-nav-dropdown-wrapper {
+  position: relative;
+}
+
+.gmi-nav-dropdown-trigger {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  padding: 8px 14px;
+  cursor: pointer;
+}
+
+.gmi-nav-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 8px;
+  background: rgba(10, 21, 16, 0.98);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(34, 197, 94, 0.2);
+  border-radius: 12px;
+  overflow: hidden;
+  display: none;
+  flex-direction: column;
+  min-width: 200px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.32);
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.2s ease, transform 0.2s ease, display 0.2s ease;
+  z-index: 1000;
+}
+
+.gmi-nav-dropdown-wrapper:hover .gmi-nav-dropdown {
+  display: flex;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.gmi-nav-dropdown-item {
+  display: block;
+  padding: 12px 20px;
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(34, 197, 94, 0.1);
+  transition: background 0.2s ease, color 0.2s ease, padding-left 0.2s ease;
+}
+.gmi-nav-dropdown-item:last-child {
+  border-bottom: none;
+}
+.gmi-nav-dropdown-item:hover {
+  background: rgba(34, 197, 94, 0.15);
+  color: #fff;
+  padding-left: 24px;
+}
+
+/* ── Mobile Projects Dropdown ── */
+.gmi-mobile-projects-wrapper {
+  position: relative;
+}
+
+.gmi-mobile-projects-trigger {
+  width: 100%;
+  color: rgba(255, 255, 255, 0.75);
+  background: none;
+  border: none;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  cursor: pointer;
+  font-size: 26px;
+  font-weight: 800;
+  opacity: 0;
+  transform: translateX(-24px);
+  transition: opacity 0.4s ease calc(var(--i) * 0.07s + 0.1s),
+              transform 0.4s cubic-bezier(0.16,1,0.3,1) calc(var(--i) * 0.07s + 0.1s),
+              border-color 0.2s ease;
+}
+.gmi-mobile-nav--open .gmi-mobile-projects-trigger {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.gmi-mobile-projects-menu {
+  display: flex;
+  flex-direction: column;
+  padding: 0 28px;
+  gap: 0;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.gmi-mobile-projects-item {
+  display: block;
+  padding: 14px 0 14px 42px;
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  transition: color 0.2s ease, padding-left 0.2s ease;
+}
+.gmi-mobile-projects-item:hover {
+  color: #4ade80;
+  padding-left: 46px;
+}
+
 /* ── Responsive breakpoint ── */
 @media (max-width: 768px) {
   .gmi-nav { display: none }

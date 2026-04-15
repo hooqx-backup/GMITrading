@@ -1,4 +1,3 @@
-import React from 'react'
 import Header from './Header'
 import Footer from './Footer'
 
@@ -6,7 +5,7 @@ export default function Layout({children}){
   return (
     <div>
       <Header />
-      <main className="container" style={{minHeight:'60vh'}}>{children}</main>
+      <main style={{minHeight:'60vh',width:'100%',overflowX:'hidden'}}>{children}</main>
       <Footer />
     </div>
   )
