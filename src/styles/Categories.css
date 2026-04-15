@@ -180,6 +180,9 @@
   width: 100%;
   padding: 40px;
   z-index: 2;
+  background: linear-gradient(0deg, rgba(6,18,11,0.55) 0%, transparent 100%);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
   transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
 }
 

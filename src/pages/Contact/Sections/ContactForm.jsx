@@ -154,11 +154,13 @@ export default function ContactForm() {
             {/* ── FORM ── */}
             <div style={{
               flex: '1 1 540px',
-              background: '#fff',
+              background: 'rgba(255,255,255,0.7)',
+              backdropFilter: 'blur(20px)',
+              WebkitBackdropFilter: 'blur(20px)',
               borderRadius: 20,
               padding: '44px 40px',
-              boxShadow: '0 4px 32px rgba(0,0,0,0.07)',
-              border: '1px solid #e8f0eb',
+              boxShadow: '0 8px 40px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.95)',
+              border: '1px solid rgba(255,255,255,0.85)',
             }}>
               {submitted ? (
                 <div style={{ textAlign: 'center', padding: '40px 0' }}>
@@ -296,9 +298,12 @@ export default function ContactForm() {
               {/* contact cards */}
               {INFO.map((item, i) => (
                 <div key={i} style={{
-                  background: '#fff', borderRadius: 16, padding: '22px 24px',
-                  border: '1px solid #e8f0eb',
-                  boxShadow: '0 2px 12px rgba(0,0,0,0.05)',
+                  background: 'rgba(255,255,255,0.65)',
+                  backdropFilter: 'blur(14px)',
+                  WebkitBackdropFilter: 'blur(14px)',
+                  borderRadius: 16, padding: '22px 24px',
+                  border: '1px solid rgba(255,255,255,0.8)',
+                  boxShadow: '0 2px 16px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.9)',
                   display: 'flex', alignItems: 'center', gap: 16,
                 }}>
                   <div style={{
@@ -330,9 +335,13 @@ export default function ContactForm() {
 
               {/* quick note */}
               <div style={{
-                background: 'linear-gradient(135deg, #0d2318, #174b36)',
+                background: 'rgba(13,35,24,0.82)',
+                backdropFilter: 'blur(18px)',
+                WebkitBackdropFilter: 'blur(18px)',
+                border: '1px solid rgba(255,255,255,0.1)',
                 borderRadius: 16, padding: '28px 24px',
                 color: '#fff',
+                boxShadow: '0 8px 32px rgba(0,0,0,0.18), inset 0 1px 0 rgba(255,255,255,0.07)',
               }}>
                 <div style={{
                   fontSize: 11, fontWeight: 700, letterSpacing: '1.5px',

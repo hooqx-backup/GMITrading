@@ -54,13 +54,15 @@ function LocationCard({ loc, index }) {
       onMouseLeave={() => setHovered(false)}
       style={{
         flex: '1 1 280px',
-        background: '#fff',
-        border: `1.5px solid ${hovered ? loc.color + '50' : '#e8e8e8'}`,
+        background: hovered ? 'rgba(255,255,255,0.85)' : 'rgba(255,255,255,0.62)',
+        backdropFilter: 'blur(18px)',
+        WebkitBackdropFilter: 'blur(18px)',
+        border: `1.5px solid ${hovered ? loc.color + '45' : 'rgba(255,255,255,0.78)'}`,
         borderRadius: 20,
         padding: '32px 28px',
         boxShadow: hovered
-          ? `0 20px 48px rgba(0,0,0,0.1), 0 0 0 1px ${loc.color}22`
-          : '0 2px 16px rgba(0,0,0,0.05)',
+          ? `0 24px 56px rgba(0,0,0,0.12), 0 0 0 1px ${loc.color}20, inset 0 1px 0 rgba(255,255,255,0.95)`
+          : '0 2px 16px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.85)',
         transition: 'all 0.35s ease',
         transform: visible
           ? hovered ? 'translateY(-6px)' : 'translateY(0)'
@@ -147,7 +149,7 @@ export default function Locations() {
       <div style={{
         position: 'relative', left: '50%', right: '50%',
         marginLeft: '-50vw', marginRight: '-50vw',
-        width: '100vw', background: '#ffffff',
+        width: '100vw', background: 'linear-gradient(135deg, #f0faf4 0%, #e8f5ee 50%, #f5fdf7 100%)',
         padding: '80px 0 88px',
       }}>
         <div className="container">

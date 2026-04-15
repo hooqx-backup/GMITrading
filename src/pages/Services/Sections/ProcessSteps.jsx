@@ -111,9 +111,11 @@ function StepCard({ step, index, active, onClick }) {
       style={{
         position: 'relative',
         background: isActive
-          ? `linear-gradient(135deg, ${step.color}18 0%, ${step.color}08 100%)`
-          : '#fff',
-        border: `1.5px solid ${isActive ? step.color + '60' : '#ebebeb'}`,
+          ? `rgba(255,255,255,0.85)`
+          : 'rgba(255,255,255,0.6)',
+        backdropFilter: 'blur(16px)',
+        WebkitBackdropFilter: 'blur(16px)',
+        border: `1.5px solid ${isActive ? step.color + '55' : 'rgba(255,255,255,0.78)'}`,
         borderRadius: 18,
         padding: '32px 28px',
         cursor: 'pointer',
@@ -124,8 +126,8 @@ function StepCard({ step, index, active, onClick }) {
         opacity: visible ? 1 : 0,
         transitionDelay: `${index * 80}ms`,
         boxShadow: isActive
-          ? `0 24px 56px ${step.color}22, 0 0 0 1px ${step.color}30`
-          : '0 2px 16px rgba(0,0,0,0.05)',
+          ? `0 28px 64px ${step.color}28, 0 0 0 1px ${step.color}30, inset 0 1px 0 rgba(255,255,255,0.95)`
+          : '0 2px 16px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.85)',
         overflow: 'visible',
         flex: '1 1 0',
         minWidth: 0,
@@ -216,11 +218,13 @@ function StepCard({ step, index, active, onClick }) {
         transition: 'opacity 0.35s ease, transform 0.35s ease',
       }}>
         <div style={{
-          background: '#fff',
+          background: 'rgba(255,255,255,0.85)',
+          backdropFilter: 'blur(14px)',
+          WebkitBackdropFilter: 'blur(14px)',
           border: `1.5px solid ${step.color}40`,
           borderRadius: 12,
           padding: '12px 14px',
-          boxShadow: `0 8px 28px ${step.color}20`,
+          boxShadow: `0 12px 32px ${step.color}25, inset 0 1px 0 rgba(255,255,255,0.95)`,
         }}>
           <p style={{
             margin: 0, fontSize: 12.5,
