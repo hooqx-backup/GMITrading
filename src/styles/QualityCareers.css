@@ -74,7 +74,7 @@
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.2em;
-  text-transform: uppercase;
+  text-transform: uppercase;       
   color: var(--qc-accent);
   margin-bottom: 28px;
 }
