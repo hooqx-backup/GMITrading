@@ -28,7 +28,7 @@ const IconPulses = () => (
 
 const categories = [
   {
-    title: 'Grains & Sugar',
+    title: 'Grains',
     desc: "Sugar, rice and flour from the world's most fertile regions.",
     image: cat1,
     Icon: IconGrains,
@@ -42,7 +42,7 @@ const categories = [
     color: '#22c55e'
   },
   {
-    title: 'Pulses & Spices',
+    title: 'Pulses & Legumes',
     desc: 'Hearty legumes and authentic spices for every kitchen.',
     image: cat3,
     Icon: IconPulses,

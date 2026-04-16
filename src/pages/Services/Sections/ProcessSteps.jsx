@@ -243,15 +243,22 @@ function StepCard({ step, index, active, onClick }) {
 export default function ProcessSteps() {
   const [active, setActive] = useState(0)
   const [headerRef, headerVisible] = useReveal(0.2)
+  const intervalRef = useRef(null)
+
+  const startAutoAdvance = () => {
+    if (intervalRef.current) clearInterval(intervalRef.current)
+    intervalRef.current = setInterval(() => setActive(a => (a + 1) % STEPS.length), 3000)
+  }
 
   // auto-advance every 3s
   useEffect(() => {
-    const t = setInterval(() => setActive(a => (a + 1) % STEPS.length), 3000)
-    return () => clearInterval(t)
+    startAutoAdvance()
+    return () => clearInterval(intervalRef.current)
   }, [])
 
   const handleClick = (i) => {
     setActive(i)
+    startAutoAdvance() // reset timer so it doesn't jump immediately after a click
   }
 
   return (
@@ -279,7 +286,9 @@ export default function ProcessSteps() {
           <div
             ref={headerRef}
             style={{
-              textAlign: 'center', marginBottom: 64,
+              display: 'flex', flexDirection: 'column', alignItems: 'center',
+              width: '100%', maxWidth: 760, margin: '0 auto 64px',
+              textAlign: 'center',
               opacity: headerVisible ? 1 : 0,
               transform: headerVisible ? 'translateY(0)' : 'translateY(30px)',
               transition: 'all 0.6s ease',
@@ -298,6 +307,7 @@ export default function ProcessSteps() {
               margin: '0 0 14px',
               fontSize: 'clamp(26px, 3.5vw, 40px)',
               fontWeight: 700, color: '#0f1f18', letterSpacing: '-0.5px',
+              textAlign: 'center', width: '100%',
             }}>
               Our 5-Step Supply Engine
             </h2>
@@ -324,7 +334,7 @@ export default function ProcessSteps() {
           </div>
 
           {/* cards row */}
-          <div style={{ display: 'flex', gap: 16, alignItems: 'flex-start', paddingBottom: 140 }}>
+          <div className="process-row" style={{ display: 'flex', gap: 16, alignItems: 'stretch', paddingBottom: 140 }}>
             {STEPS.map((s, i) => (
               <StepCard
                 key={i}
@@ -354,6 +364,7 @@ export default function ProcessSteps() {
       <style>{`
         @media (max-width: 900px) {
           .process-row { flex-direction: column !important; }
+          .process-row > * { width: 100% !important; }
         }
       `}</style>
     </section>

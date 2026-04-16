@@ -1,0 +1,187 @@
+/* ── Scroll Toggle Button ─────────────────────────────── */
+
+@keyframes stb-in {
+  from { opacity: 0; transform: translateY(20px) scale(0.7); }
+  to   { opacity: 1; transform: translateY(0)    scale(1);   }
+}
+
+@keyframes stb-out {
+  from { opacity: 1; transform: translateY(0)    scale(1);   }
+  to   { opacity: 0; transform: translateY(20px) scale(0.7); }
+}
+
+@keyframes stb-pulse-ring {
+  0%   { transform: scale(1);    opacity: 0.55; }
+  100% { transform: scale(1.9);  opacity: 0;    }
+}
+
+@keyframes stb-ripple {
+  0%   { transform: scale(0.6); opacity: 0.7; }
+  100% { transform: scale(2.2); opacity: 0;   }
+}
+
+@keyframes stb-float {
+  0%, 100% { transform: translateY(0px);  }
+  50%      { transform: translateY(-4px); }
+}
+
+/* ── Base ── */
+.stb-btn {
+  position: fixed;
+  bottom: 36px;
+  right: 36px;
+  z-index: 9999;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
+  color: #16a34a;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    0 2px 8px rgba(0,0,0,0.08),
+    0 8px 24px rgba(0,0,0,0.10),
+    0 0 0 1px rgba(22,163,74,0.15);
+  opacity: 0;
+  pointer-events: none;
+  outline: none;
+  animation: stb-float 3.2s ease-in-out infinite;
+  animation-play-state: paused;
+  transition:
+    box-shadow 0.25s ease,
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+/* ── Visible ── */
+.stb-btn--visible {
+  opacity: 1;
+  pointer-events: auto;
+  animation-play-state: running;
+  animation: stb-in 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards,
+             stb-float 3.2s ease-in-out 0.4s infinite;
+}
+
+/* ── At-bottom state → darker green accent ── */
+.stb-btn--bottom {
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  color: #047857;
+  box-shadow:
+    0 2px 8px rgba(0,0,0,0.08),
+    0 8px 24px rgba(4,120,87,0.20),
+    0 0 0 1px rgba(4,120,87,0.20);
+}
+
+/* ── Hover ── */
+.stb-btn:hover {
+  background: linear-gradient(135deg, #16a34a 0%, #22c55e 100%);
+  color: #ffffff;
+  box-shadow:
+    0 4px 12px rgba(22,163,74,0.30),
+    0 12px 32px rgba(22,163,74,0.35),
+    0 0 0 1px rgba(22,163,74,0.5);
+  animation-play-state: paused;
+  transform: scale(1.08);
+}
+
+.stb-btn--bottom:hover {
+  background: linear-gradient(135deg, #047857 0%, #059669 100%);
+  color: #ffffff;
+  box-shadow:
+    0 4px 12px rgba(4,120,87,0.30),
+    0 12px 32px rgba(4,120,87,0.35),
+    0 0 0 1px rgba(4,120,87,0.5);
+}
+
+/* ── Click ripple ── */
+.stb-btn--clicked::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0;
+  animation: stb-ripple 0.55s ease-out forwards;
+}
+
+/* ── Pulse ring (idle) ── */
+.stb-pulse {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1.5px solid #16a34a;
+  opacity: 0;
+  animation: stb-pulse-ring 2.6s ease-out 1.2s infinite;
+  pointer-events: none;
+}
+
+.stb-btn--bottom .stb-pulse {
+  border-color: #047857;
+}
+
+.stb-btn:hover .stb-pulse {
+  animation: none;
+  opacity: 0;
+}
+
+/* ── SVG ── */
+.stb-svg {
+  width: 50px;
+  height: 50px;
+  position: relative;
+  z-index: 1;
+  overflow: visible;
+}
+
+/* Track ring */
+.stb-track {
+  stroke: rgba(22, 163, 74, 0.12);
+  transition: stroke 0.3s;
+}
+
+.stb-btn--bottom .stb-track {
+  stroke: rgba(4, 120, 87, 0.15);
+}
+
+/* Progress arc */
+.stb-arc {
+  stroke: #16a34a;
+  transition: stroke 0.3s, stroke-dasharray 0.12s linear;
+  filter: drop-shadow(0 0 3px rgba(22,163,74,0.55));
+}
+
+.stb-btn--bottom .stb-arc {
+  stroke: #047857;
+  filter: drop-shadow(0 0 3px rgba(4,120,87,0.55));
+}
+
+.stb-btn:hover .stb-arc {
+  stroke: rgba(255,255,255,0.7);
+  filter: none;
+}
+
+/* Arrow chevron */
+.stb-arrow {
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.stb-btn:hover .stb-arrow {
+  stroke: #ffffff;
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .stb-btn {
+    bottom: 22px;
+    right: 22px;
+    width: 48px;
+    height: 48px;
+  }
+  .stb-svg {
+    width: 44px;
+    height: 44px;
+  }
+}

@@ -11,9 +11,8 @@ const NAV = [
 ]
 
 const EXPLORE = [
-  { label: 'Sustainability',     to: '/sustainability' },
-  { label: 'AI Implementations', to: '/ai' },
-  { label: 'Career',             to: '/career' },
+ 
+ {label:'Terms and conditions', to:'/terms'},
   { label: 'Privacy Policy',     to: '/privacy' },
 ]
 
@@ -545,9 +544,9 @@ export default function Footer() {
             </div>
 
             <div className="footer-bottom-links">
-              <a href="#" className="footer-bottom-link">Privacy Policy</a>
+              <Link to="/privacy" className="footer-bottom-link">Privacy Policy</Link>
               <span className="footer-bottom-sep"/>
-              <a href="#" className="footer-bottom-link">Terms of Use</a>
+              <Link to="/terms" className="footer-bottom-link">Terms and Conditions</Link>
             </div>
           </div>
 

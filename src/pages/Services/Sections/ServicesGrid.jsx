@@ -406,7 +406,9 @@ export default function ServicesGrid() {
           <div
             ref={headerRef}
             style={{
-              textAlign:'center', marginBottom:60,
+              display:'flex', flexDirection:'column', alignItems:'center',
+              width:'100%', maxWidth:760, margin:'0 auto 60px',
+              textAlign:'center',
               opacity: headerVisible ? 1 : 0,
               transform: headerVisible ? 'translateY(0)' : 'translateY(30px)',
               transition:'all 0.6s ease',
@@ -424,16 +426,17 @@ export default function ServicesGrid() {
             <h2 style={{
               margin:'0 0 14px', fontSize:'clamp(26px,3.5vw,40px)',
               fontWeight:700, color:'#0f1f18', letterSpacing:'-0.5px',
+              textAlign:'center', width:'100%',
             }}>
               Our Core Services
             </h2>
-            <p style={{ maxWidth:500, margin:'0 auto', fontSize:15, color:'#6b7280', lineHeight:1.7 }}>
+            <p style={{ maxWidth:500, fontSize:15, color:'#6b7280', lineHeight:1.7, textAlign:'center', margin:0 }}>
               Eight capabilities — one integrated supply chain, built for UAE food businesses.
             </p>
           </div>
 
           {/* bento grid */}
-          <div style={{ display:'grid', gridTemplateColumns:'repeat(3, 1fr)', gap:22 }}>
+          <div className="services-bento" style={{ display:'grid', gridTemplateColumns:'repeat(3, 1fr)', gap:22 }}>
             <FeaturedCard s={featured} />
             {rest.map((s, i) => (
               <ServiceCard key={i} s={s} index={i} />
