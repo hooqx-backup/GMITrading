@@ -83,7 +83,7 @@ export default function SocialProof() {
               border: '1px solid rgba(42,160,90,0.28)',
               borderRadius: 999, padding: '4px 16px', marginBottom: 16,
             }}>
-              Social Proof
+              Client Success
             </span>
             <h2 style={{
               margin: '0', color: '#0f1f18',

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { NavLink } from 'react-router-dom'
 import gmiLogo from '../assets/logos/gmi-logo.png'
 import '../styles/Header.css'
@@ -6,8 +6,8 @@ import '../styles/Header.css'
 const links = [
   { to: '/', label: 'Home' },
   { to: '/about', label: 'About' },
-  { to: '/products', label: 'Products' },
-  { to: '/services', label: 'Services' },
+
+
   { to: '/contact', label: 'Contact' },
   { to: '/services', label: 'Services' }
 ]
@@ -22,6 +22,8 @@ export default function Header() {
   const [open, setOpen] = useState(false)
   const [projectsOpen, setProjectsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const desktopDropdownRef = useRef(null)
+  const mobileProjectsRef = useRef(null)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10)
@@ -29,8 +31,25 @@ export default function Header() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  // close desktop dropdown on outside click
+  useEffect(() => {
+    const onClickOutside = (e) => {
+      const inDesktop = desktopDropdownRef.current?.contains(e.target)
+      const inMobile = mobileProjectsRef.current?.contains(e.target)
+
+      if (!inDesktop && !inMobile) {
+        setProjectsOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', onClickOutside)
+    return () => document.removeEventListener('mousedown', onClickOutside)
+  }, [])
+
   // close on route change
-  const handleLinkClick = () => setOpen(false)
+  const handleLinkClick = () => {
+    setOpen(false)
+    setProjectsOpen(false)
+  }
 
   return (
     <>
@@ -56,10 +75,16 @@ export default function Header() {
             ))}
             
             {/* Projects Dropdown */}
-            <div className="gmi-nav-dropdown-wrapper">
-              <button className="gmi-nav-link gmi-nav-dropdown-trigger">
+            <div
+              ref={desktopDropdownRef}
+              className={`gmi-nav-dropdown-wrapper${projectsOpen ? ' gmi-nav-dropdown-wrapper--open' : ''}`}
+            >
+              <button
+                className="gmi-nav-link gmi-nav-dropdown-trigger"
+                onClick={() => setProjectsOpen((v) => !v)}
+              >
                 Projects
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginLeft: '6px', transition: 'transform 0.3s' }}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginLeft: '6px', transition: 'transform 0.3s', transform: projectsOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}>
                   <path d="M6 9l6 6 6-6" />
                 </svg>
                 <span className="gmi-nav-link-bar" />
@@ -76,6 +101,29 @@ export default function Header() {
             <NavLink to="/contact" className="gmi-nav-cta" onClick={handleLinkClick}>
               Get Started
             </NavLink>
+
+            {/* Social icons */}
+            <div className="gmi-nav-socials">
+              <a href="https://www.facebook.com/GMIGENERALTRADING/?rdid=swxzfrDpdTlPhDel" target="_blank" rel="noopener noreferrer" className="gmi-nav-social-icon" aria-label="Facebook">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                </svg>
+              </a>
+              <a href="https://www.instagram.com/gmitrading25/?igsh=ZjhxczlpYzc2NGRm#" target="_blank" rel="noopener noreferrer" className="gmi-nav-social-icon" aria-label="Instagram">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                </svg>
+              </a>
+              <a href="https://www.linkedin.com/authwall?trk=bf&trkInfo=AQF_zMkuRK4soQAAAZ2Wes7gPxhJ1L085rbzEVTkCgx2ictkrTRu1Qp8sytrdviRDwsKEu3cyszU2RYo3nGBnxGZrPTjT-0IMVK3CV_NaTnvPBCUqSGtJwmKi-gSUev9uEX88j0=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2Fgmi-trading-official%2F" target="_blank" rel="noopener noreferrer" className="gmi-nav-social-icon" aria-label="LinkedIn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                  <rect x="2" y="9" width="4" height="12"/>
+                  <circle cx="4" cy="4" r="2"/>
+                </svg>
+              </a>
+            </div>
           </nav>
 
           {/* Hamburger */}
@@ -138,7 +186,7 @@ export default function Header() {
           ))}
           
           {/* Mobile Projects Dropdown */}
-          <div className="gmi-mobile-projects-wrapper">
+          <div ref={mobileProjectsRef} className="gmi-mobile-projects-wrapper">
             <button 
               className="gmi-mobile-link gmi-mobile-projects-trigger"
               onClick={() => setProjectsOpen(!projectsOpen)}

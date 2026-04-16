@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
 import {
   motion,
   useMotionValue,
@@ -19,6 +20,7 @@ const projects = [
     description: 'End-to-end tinning solutions for refined edible oils — from sourcing to export-ready packaging.',
     tag: 'Processing',
     img: img1,
+    slug: '/oil-tinning',
   },
   {
     id: '02',
@@ -26,6 +28,7 @@ const projects = [
     description: 'World-class grain handling and packaging with full traceability from farm to shelf.',
     tag: 'Agri-Trade',
     img: img2,
+    slug: '/grains-packaging',
   },
   {
     id: '03',
@@ -33,6 +36,7 @@ const projects = [
     description: 'Premium avocado cultivation and cold-chain logistics ensuring quality at every touchpoint.',
     tag: 'Horticulture',
     img: img3,
+    slug: '/avocado-farming',
   },
 ]
 
@@ -50,6 +54,7 @@ const cardVariants = {
 function ProjectCard({ project, index, featured = false, isInView }) {
   const cardRef  = useRef(null)
   const [hovered, setHovered] = useState(false)
+  const navigate = useNavigate()
 
   const mouseX = useMotionValue(0.5)
   const mouseY = useMotionValue(0.5)
@@ -85,11 +90,12 @@ function ProjectCard({ project, index, featured = false, isInView }) {
       initial="hidden"
       animate={isInView ? 'visible' : 'hidden'}
       custom={index}
-      style={{ rotateX, rotateY, transformPerspective: 1200 }} 
+      style={{ rotateX, rotateY, transformPerspective: 1200, cursor: 'pointer' }}
       whileHover={{ scale: 1.02, zIndex: 10, transition: SPRING }}
       onMouseEnter={() => setHovered(true)}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      onClick={() => navigate(project.slug)}
     >
       {/* 1. Background Clipping Layer (Fixes the overlay edges) */}
       <div className="proj-bg-clip">
@@ -180,7 +186,7 @@ function ProjectCard({ project, index, featured = false, isInView }) {
                   {project.description}
                 </motion.p>
 
-                <button className="proj-cta" aria-label="View Project">
+                <button className="proj-cta" aria-label="View Project" onClick={(e) => { e.stopPropagation(); navigate(project.slug) }}>
                   <motion.span
                     className="proj-cta-text"
                     initial={{ opacity: 0, x: -8 }}
