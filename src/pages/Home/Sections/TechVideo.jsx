@@ -1,5 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import { Check } from 'lucide-react'
 import techVideo from '../../../assets/videos/tech-video.mp4'
 import '../../../styles/TechVideo.css'
 
@@ -81,9 +82,7 @@ export default function TechVideo() {
                 transition={{ duration: 0.6, delay: 0.4 + (i * 0.1), ease: cubicBezier }}
               >
                 <span className="techvideo-feature-icon">
-                  <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="2,6 5,9 10,3" />
-                  </svg>
+                  <Check size={11} strokeWidth={2.5} />
                 </span>
                 {f}
               </motion.li>

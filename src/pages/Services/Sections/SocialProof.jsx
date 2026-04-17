@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
+import { Download } from 'lucide-react'
 
 const CLIENTS = [
   { name: 'Carrefour',              initials: 'CR', color: '#003da5' },
@@ -293,11 +294,7 @@ export default function SocialProof() {
                 e.currentTarget.style.boxShadow = '0 8px 32px rgba(42,160,90,0.35)'
               }}
             >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-                <polyline points="7 10 12 15 17 10"/>
-                <line x1="12" y1="15" x2="12" y2="3"/>
-              </svg>
+              <Download size={16} />
               Download 2025 Service Catalogue PDF
             </Link>
           </div>

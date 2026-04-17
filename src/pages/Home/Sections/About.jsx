@@ -1,54 +1,15 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import { MapPin, Warehouse, Globe, Cpu, Leaf, Rocket } from 'lucide-react'
 import aboutSectionImage from '../../../assets/images/about-section.jpg'
 import '../../../styles/About.css'
 
-/* ── SVG Icons ── */
-const IconPin = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
-    <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/>
-    <circle cx="12" cy="10" r="3"/>
-  </svg>
-)
-const IconWarehouse = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
-    <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5l3-3h14l3 3z"/>
-    <line x1="16" y1="8" x2="16" y2="22"/>
-    <line x1="8"  y1="8" x2="8"  y2="22"/>
-    <line x1="2"  y1="14" x2="22" y2="14"/>
-  </svg>
-)
-const IconGlobe = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
-    <circle cx="12" cy="12" r="10"/>
-    <line x1="2" y1="12" x2="22" y2="12"/>
-    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-  </svg>
-)
-const IconCpu = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
-    <rect x="4" y="4" width="16" height="16" rx="2"/>
-    <rect x="9" y="9" width="6" height="6"/>
-    <line x1="9" y1="1" x2="9" y2="4"/>  <line x1="15" y1="1" x2="15" y2="4"/>
-    <line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/>
-    <line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/>
-    <line x1="1"  y1="9" x2="4"  y2="9"/><line x1="1"  y1="14" x2="4"  y2="14"/>
-  </svg>
-)
-const IconLeaf = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
-    <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/>
-    <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
-  </svg>
-)
-const IconRocket = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
-    <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2l-.55-.55"/>
-    <path d="M12 8L6.7 13.3C4.48 15.52 4 20 4 20s4.48-.48 6.7-2.7L16 12"/>
-    <path d="M15.53 3.83a14.29 14.29 0 0 1 3.64 3.64 7.57 7.57 0 0 1-7.07 7.07 14.29 14.29 0 0 1-3.64-3.64 7.57 7.57 0 0 1 7.07-7.07z"/>
-    <circle cx="16" cy="8" r="2"/>
-  </svg>
-)
+const IconPin      = () => <MapPin strokeWidth={2} />
+const IconWarehouse = () => <Warehouse strokeWidth={2} />
+const IconGlobe    = () => <Globe strokeWidth={2} />
+const IconCpu      = () => <Cpu strokeWidth={2} />
+const IconLeaf     = () => <Leaf strokeWidth={2} />
+const IconRocket   = () => <Rocket strokeWidth={2} />
 
 const HIGHLIGHTS = [
   {

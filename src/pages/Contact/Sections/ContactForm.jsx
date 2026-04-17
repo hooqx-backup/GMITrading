@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { ArrowRight, Mail, Phone, Clock, Check } from 'lucide-react'
 
 const COUNTRIES = [
   'United Arab Emirates', 'Saudi Arabia', 'Kuwait', 'Qatar', 'Bahrain',
@@ -87,33 +88,19 @@ export default function ContactForm() {
 
   const INFO = [
     {
-      icon: (
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-          <polyline points="22,6 12,13 2,6"/>
-        </svg>
-      ),
+      icon: <Mail size={18} strokeWidth={2} />,
       label: 'Email Us',
       value: 'info@gmitrading.me',
       href: 'mailto:info@gmitrading.me',
     },
     {
-      icon: (
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.13 6.13l1.17-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
-        </svg>
-      ),
+      icon: <Phone size={18} strokeWidth={2} />,
       label: 'Call Us',
       value: '+971 4 509 5923',
       href: 'tel:+97145095923',
     },
     {
-      icon: (
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <circle cx="12" cy="12" r="10"/>
-          <polyline points="12 6 12 12 16 14"/>
-        </svg>
-      ),
+      icon: <Clock size={18} strokeWidth={2} />,
       label: 'Response Time',
       value: 'Within 2 business hours',
       href: null,
@@ -122,6 +109,13 @@ export default function ContactForm() {
 
   return (
     <section style={{ padding: '72px 0', background: '#f4f7f5' }}>
+      <style>{`
+        .contact-two-col { display: flex; gap: 28px; align-items: flex-start; flex-wrap: wrap; }
+        .contact-info-panel { flex: 0 0 300px; display: flex; flex-direction: column; gap: 16px; }
+        @media (max-width: 900px) {
+          .contact-info-panel { flex: 1 1 100%; }
+        }
+      `}</style>
       <div style={{
         position: 'relative', left: '50%', right: '50%',
         marginLeft: '-50vw', marginRight: '-50vw',
@@ -149,7 +143,7 @@ export default function ContactForm() {
           </div>
 
           {/* two-column */}
-          <div style={{ display: 'flex', gap: 28, alignItems: 'flex-start', flexWrap: 'wrap' }}>
+          <div className="contact-two-col">
 
             {/* ── FORM ── */}
             <div style={{
@@ -170,9 +164,7 @@ export default function ContactForm() {
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                     margin: '0 auto 20px',
                   }}>
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#2aa05a" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <polyline points="20 6 9 17 4 12"/>
-                    </svg>
+                    <Check size={32} color="#2aa05a" strokeWidth={2.5} />
                   </div>
                   <h3 style={{ margin: '0 0 8px', color: '#0f1f18' }}>Message Sent!</h3>
                   <p style={{ color: '#6b7280', fontSize: 14 }}>We'll get back to you within 2 business hours.</p>
@@ -180,7 +172,7 @@ export default function ContactForm() {
                     onClick={() => { setSubmitted(false); setForm({ name:'',email:'',phone:'',address1:'',address2:'',city:'',state:'',zip:'',country:'',subject:'',message:'' }) }}
                     style={{ marginTop: 20, background: 'none', border: 'none', color: '#2aa05a', fontWeight: 700, cursor: 'pointer', fontSize: 14 }}
                   >
-                    Send another message →
+                    Send another message <ArrowRight size={14} style={{ display: 'inline', verticalAlign: 'middle' }} />
                   </button>
                 </div>
               ) : (
@@ -290,10 +282,7 @@ export default function ContactForm() {
             </div>
 
             {/* ── INFO PANEL ── */}
-            <div style={{
-              flex: '0 0 300px',
-              display: 'flex', flexDirection: 'column', gap: 16,
-            }}>
+            <div className="contact-info-panel">
 
               {/* contact cards */}
               {INFO.map((item, i) => (

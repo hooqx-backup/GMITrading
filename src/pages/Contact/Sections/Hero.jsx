@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
+import { ArrowRight, Phone } from 'lucide-react'
 
 /* Animated wave SVG canvas */
 function WaveCanvas() {
@@ -148,9 +149,7 @@ export default function Hero() {
             onMouseLeave={e=>{ e.currentTarget.style.transform='translateY(0)'; e.currentTarget.style.boxShadow='0 8px 28px rgba(42,160,90,0.4)' }}
           >
             Send a Message
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
+            <ArrowRight size={15} strokeWidth={2.5} />
           </Link>
           <a href="tel:+97145095923" style={{
             display:'inline-flex', alignItems:'center', gap:9,
@@ -163,9 +162,7 @@ export default function Hero() {
             onMouseEnter={e=>{ e.currentTarget.style.background='rgba(42,160,90,0.15)'; e.currentTarget.style.borderColor='rgba(42,160,90,0.5)' }}
             onMouseLeave={e=>{ e.currentTarget.style.background='rgba(255,255,255,0.07)'; e.currentTarget.style.borderColor='rgba(255,255,255,0.18)' }}
           >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.13 6.13l1.17-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
-            </svg>
+            <Phone size={14} strokeWidth={2} />
             +971 4 509 5923
           </a>
         </div>
@@ -180,10 +177,10 @@ export default function Hero() {
           flexWrap:'wrap',
         }}>
           {[
-            { value:'2 hrs', label:'Response time', icon:'⚡' },
-            { value:'10,000+', label:'Outlets served', icon:'📦' },
-            { value:'25', label:'Source countries', icon:'🌍' },
-            { value:'99%', label:'On-time delivery', icon:'✅' },
+            { value:'2 hrs', label:'Response time' },
+            { value:'10,000+', label:'Outlets served' },
+            { value:'25', label:'Source countries' },
+            { value:'99%', label:'On-time delivery' },
           ].map((t, i, arr) => (
             <div key={i} style={{
               padding:'16px 28px', textAlign:'center',

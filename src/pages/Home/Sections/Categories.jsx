@@ -1,30 +1,16 @@
 import React from 'react'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
+import { Wheat, Droplets, Clock, ArrowUpRight } from 'lucide-react'
 import '../../../styles/Categories.css'
 import catBackground from '../../../assets/images/cat-background.png'
 import cat1 from '../../../assets/images/cat1.webp'
 import cat2 from '../../../assets/images/cat2.webp'
 import cat3 from '../../../assets/images/cat3.webp'
 
-const IconGrains = () => (
-  <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-  </svg>
-)
-
-const IconOils = () => (
-  <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
-  </svg>
-)
-
-const IconPulses = () => (
-  <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <circle cx="12" cy="12" r="10"/>
-    <path d="M12 8v4l3 3"/>
-  </svg>
-)
+const IconGrains  = () => <Wheat  width="24" height="24" strokeWidth="2" />
+const IconOils    = () => <Droplets width="24" height="24" strokeWidth="2" />
+const IconPulses  = () => <Clock  width="24" height="24" strokeWidth="2" />
 
 const categories = [
   {
@@ -93,9 +79,7 @@ function CategoryCard({ category, index }) {
         <div className="category-card-overlay" />
 
         <div className="category-card-arrow">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-            <line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" />
-          </svg>
+          <ArrowUpRight width="20" height="20" strokeWidth="2.5" />
         </div>
 
         <div className="category-card-content">

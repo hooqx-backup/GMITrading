@@ -1,5 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import { Home, TrendingUp } from 'lucide-react'
 import '../../../styles/Spotlight.css'
 
 const VIDEO_ID = '1JhajLAqNqk'
@@ -61,10 +62,7 @@ export default function Spotlight() {
             }}
           >
             <div className="spotlight-badge-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                <polyline points="9 22 9 12 15 12 15 22"/>
-              </svg>
+              <Home size={20} strokeWidth={2} />
             </div>
             <div className="spotlight-badge-text">
               <strong>5 Offices</strong>
@@ -81,10 +79,7 @@ export default function Spotlight() {
             }}
           >
             <div className="spotlight-badge-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/>
-                <polyline points="16 7 22 7 22 13"/>
-              </svg>
+              <TrendingUp size={20} strokeWidth={2} />
             </div>
             <div className="spotlight-badge-text">
               <strong>10,000+ Customers</strong>

@@ -1,4 +1,5 @@
 import ProjectPage from './ProjectPage'
+import { Microscope, Scale, Wheat, UtensilsCrossed, Leaf, Package, Tag, AlertTriangle, Link2 } from 'lucide-react'
 
 const project = {
   title: 'Grains Packaging',
@@ -36,19 +37,19 @@ const project = {
     subheading: 'Optical sorting, precision weighing, and full traceability for every pack.',
     items: [
       {
-        icon: '🔬',
+        icon: <Microscope size={22} />,
         tag: 'Sorting Technology',
         title: 'Optical Sorting',
         desc: 'Bühler SORTEX machines remove discoloured, broken and foreign grains at 99.5% accuracy. Output is re-run if defect rate exceeds 0.2% — zero compromise on pack quality.',
       },
       {
-        icon: '⚖️',
+        icon: <Scale size={22} />,
         tag: 'Precision',
         title: 'Precision Weighing',
         desc: 'Multihead combination weighers deliver ±1 g accuracy across all retail pack sizes. Each pouch is checked by an inline checkweigher; under-weight packs are automatically rejected.',
       },
       {
-        icon: '🌾',
+        icon: <Wheat size={22} />,
         tag: 'Traceability',
         title: 'Origin Traceability',
         desc: 'Lot codes link every pack to its source container, origin certificate and lab report. Full traceability in under 4 hours — a critical requirement for UAE retailers.',
@@ -71,12 +72,12 @@ const project = {
   features: {
     heading: 'Complete Grain Solutions',
     items: [
-      { icon: '🍚', title: 'Multi-Grade Rice', desc: 'Basmati (extra-long, long), parboiled, jasmine and short-grain white — all handled on the same line.' },
-      { icon: '🫘', title: 'Pulse Varieties', desc: 'Green & red lentils, chickpeas, black-eye beans, mung beans and split peas available year-round.' },
-      { icon: '📦', title: 'Flexible Pack Formats', desc: 'Retail pouches (1–5 kg), foodservice bags (10–25 kg) and bulk sacks (50 kg) from one facility.' },
-      { icon: '🏷️', title: 'Private Label & Co-Pack', desc: 'Full design-to-shelf private label service including ESMA-compliant label copy and barcode registration.' },
-      { icon: '⚠️', title: 'Allergen Segregation', desc: 'Dedicated lines and scheduling windows for allergen-sensitive SKUs with full environmental monitoring.' },
-      { icon: '🔗', title: 'Lot Traceability', desc: 'Digital lot tracking links finished pack to source vessel, origin document and QC test report in <4 hours.' },
+      { icon: <UtensilsCrossed size={18} />, title: 'Multi-Grade Rice', desc: 'Basmati (extra-long, long), parboiled, jasmine and short-grain white — all handled on the same line.' },
+      { icon: <Leaf size={18} />,            title: 'Pulse Varieties', desc: 'Green & red lentils, chickpeas, black-eye beans, mung beans and split peas available year-round.' },
+      { icon: <Package size={18} />,         title: 'Flexible Pack Formats', desc: 'Retail pouches (1–5 kg), foodservice bags (10–25 kg) and bulk sacks (50 kg) from one facility.' },
+      { icon: <Tag size={18} />,             title: 'Private Label & Co-Pack', desc: 'Full design-to-shelf private label service including ESMA-compliant label copy and barcode registration.' },
+      { icon: <AlertTriangle size={18} />,   title: 'Allergen Segregation', desc: 'Dedicated lines and scheduling windows for allergen-sensitive SKUs with full environmental monitoring.' },
+      { icon: <Link2 size={18} />,           title: 'Lot Traceability', desc: 'Digital lot tracking links finished pack to source vessel, origin document and QC test report in <4 hours.' },
     ],
   },
 
