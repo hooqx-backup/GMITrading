@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
+import { ChevronRight, Check, ArrowRight, Phone, Star } from 'lucide-react'
 
 /* ─────────────────────────────────────────────
    EASING + SPRING CONSTANTS
@@ -165,9 +166,9 @@ export default function ProjectPage({ project }) {
                 style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 28 }}
               >
                 <Link to="/" style={{ fontSize: 12, color: '#9ca3af', textDecoration: 'none', fontWeight: 500 }}>Home</Link>
-                <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="#d1d5db" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                <ChevronRight size={12} color="#d1d5db" strokeWidth={1.5} />
                 <Link to="/products" style={{ fontSize: 12, color: '#9ca3af', textDecoration: 'none', fontWeight: 500 }}>Projects</Link>
-                <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="#d1d5db" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                <ChevronRight size={12} color="#d1d5db" strokeWidth={1.5} />
                 <span style={{ fontSize: 12, color: accentColor, fontWeight: 600 }}>{title}</span>
               </motion.div>
 
@@ -183,15 +184,16 @@ export default function ProjectPage({ project }) {
               </motion.div>
 
               {/* title */}
-              <div style={{ overflow: 'hidden', marginBottom: 20 }}>
+              <div className="proj-page-hero-title-mask" style={{ overflow: 'hidden', marginBottom: 20, paddingBottom: '0.38em' }}>
                 <motion.h1
+                  className="proj-page-hero-title"
                   initial={{ y: '110%' }}
                   animate={{ y: '0%' }}
                   transition={{ duration: 0.85, ease: EASE, delay: 0.3 }}
                   style={{
                     fontSize: 'clamp(38px, 5.5vw, 72px)',
                     fontWeight: 900, color: '#0f172a',
-                    margin: 0, lineHeight: 1.0, letterSpacing: '-2.5px',
+                    margin: 0, lineHeight: 1.15, letterSpacing: '-1.8px',
                   }}
                 >
                   {title}
@@ -289,9 +291,7 @@ export default function ProjectPage({ project }) {
                   background: `linear-gradient(135deg, ${accentColor}, ${accentColor}bb)`,
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                 }}>
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                  </svg>
+                  <Star size={18} color="white" strokeWidth={2.5} />
                 </div>
                 <div>
                   <div style={{ fontSize: 12, fontWeight: 700, color: '#0f172a' }}>Premium Grade</div>
@@ -328,6 +328,8 @@ export default function ProjectPage({ project }) {
           }
           @media (max-width: 640px) {
             .proj-page-hero-grid { gap: 32px !important; }
+            .proj-page-hero-title-mask { padding-bottom: 0.52em !important; }
+            .proj-page-hero-title { line-height: 1.2 !important; letter-spacing: -1px !important; }
           }
         `}</style>
       </div>
@@ -378,9 +380,7 @@ export default function ProjectPage({ project }) {
                         background: accentColor + '14', border: `1.5px solid ${accentColor}40`,
                         display: 'flex', alignItems: 'center', justifyContent: 'center',
                       }}>
-                        <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                          <path d="M2 5.5l2 2 4-4" stroke={accentColor} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
+                        <Check size={10} color={accentColor} strokeWidth={2} />
                       </span>
                       {b}
                     </motion.li>
@@ -669,9 +669,7 @@ export default function ProjectPage({ project }) {
                       boxShadow: '0 8px 32px rgba(0,0,0,0.15)',
                     }}>
                       {cta.primary}
-                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                      </svg>
+                      <ArrowRight size={15} strokeWidth={2.5} />
                     </Link>
                   </motion.div>
                 </motion.div>
@@ -688,9 +686,7 @@ export default function ProjectPage({ project }) {
                       color: '#ffffff', padding: '15px 28px', borderRadius: 12,
                       fontWeight: 600, fontSize: 15, textDecoration: 'none',
                     }}>
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.0 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/>
-                      </svg>
+                      <Phone size={16} />
                       Request a Callback
                     </a>
                   </motion.div>

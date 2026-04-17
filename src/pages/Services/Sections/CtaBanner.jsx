@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { ArrowRight, Phone, Check } from 'lucide-react'
 
 function useReveal(threshold = 0.15) {
   const ref = useRef(null)
@@ -138,9 +139,7 @@ export default function CtaBanner() {
                 }}
               >
                 Let's Talk
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
+                <ArrowRight size={16} />
               </Link>
 
               <a
@@ -164,9 +163,7 @@ export default function CtaBanner() {
                   e.currentTarget.style.borderColor = '#d1d5db'
                 }}
               >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.13 6.13l1.17-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
-                </svg>
+                <Phone size={16} />
                 +971 4 123 4567
               </a>
             </div>
@@ -177,10 +174,10 @@ export default function CtaBanner() {
               flexWrap: 'wrap',
             }}>
               {[
-                { icon: '✓', text: 'No long-term commitment required' },
-                { icon: '✓', text: 'Response within 2 business hours' },
-                { icon: '✓', text: 'Free supply chain audit on first call' },
-              ].map((t, i) => (
+                'No long-term commitment required',
+                'Response within 2 business hours',
+                'Free supply chain audit on first call',
+              ].map((text, i) => (
                 <div key={i} style={{
                   display: 'flex', alignItems: 'center', gap: 7,
                   fontSize: 13, color: '#6b7280',
@@ -190,11 +187,11 @@ export default function CtaBanner() {
                     background: 'rgba(42,160,90,0.2)',
                     border: '1px solid rgba(42,160,90,0.4)',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    fontSize: 10, color: '#2aa05a', fontWeight: 700, flexShrink: 0,
+                    color: '#2aa05a', flexShrink: 0,
                   }}>
-                    {t.icon}
+                    <Check size={10} />
                   </span>
-                  {t.text}
+                  {text}
                 </div>
               ))}
             </div>

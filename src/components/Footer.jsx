@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { Mail, Phone, MapPin, Check } from 'lucide-react'
 import gmiLogo from '../assets/logos/gmi-logo.png'
 
 const NAV = [
@@ -28,7 +29,6 @@ const LinkedInIcon = () => (
     <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
   </svg>
 )
-
 const InstagramIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
@@ -36,7 +36,6 @@ const InstagramIcon = () => (
     <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
   </svg>
 )
-
 const XIcon = () => (
   <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
     <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.742l7.73-8.835L1.254 2.25H8.08l4.259 5.631 5.905-5.631zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
@@ -178,10 +177,39 @@ const FOOTER_STYLES = `
     .footer-nl-input { width: 220px; }
   }
   @media (max-width: 640px) {
-    .footer-grid { grid-template-columns: 1fr; }
-    .footer-nl-form { flex-direction: column; width: 100%; }
-    .footer-nl-input { width: 100%; border-right: 1px solid rgba(42,160,90,0.22); border-radius: 12px; }
-    .footer-nl-btn { width: 100%; border-radius: 12px; }
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 28px 24px;
+      padding: 32px 20px 28px;
+    }
+    .footer-grid > div:first-child {
+      grid-column: 1 / -1;
+    }
+    .footer-newsletter {
+      padding: 24px 20px;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .footer-nl-left .footer-nl-badge { display: none; }
+    .footer-nl-title { font-size: 16px !important; margin-bottom: 2px !important; }
+    .footer-nl-sub { display: none; }
+    .footer-nl-form { flex-direction: row; width: 100%; gap: 0; }
+    .footer-nl-input {
+      flex: 1;
+      border-right: none;
+      border-radius: 12px 0 0 12px;
+      width: auto;
+    }
+    .footer-nl-btn { width: auto; border-radius: 0 12px 12px 0; padding: 0 16px; }
+    .footer-divider { margin: 0 20px; }
+    .footer-bottom {
+      padding: 16px 20px 20px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .footer-bottom-badge { display: none; }
+    .footer-section-label { margin-bottom: 14px; }
   }
 
   /* ── section label ── */
@@ -320,6 +348,39 @@ const FOOTER_STYLES = `
     background: rgba(255,255,255,0.1);
   }
 
+  /* ── brand description ── */
+  .footer-brand-desc {
+    font-size: 14px;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.6;
+    margin: 0 0 24px;
+    max-width: 280px;
+  }
+
+  /* ── brand contact links ── */
+  .footer-brand-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  @media (max-width: 640px) {
+    .footer-brand-desc {
+      font-size: 12px;
+      margin-bottom: 14px;
+      max-width: 100%;
+    }
+    .footer-brand-contact {
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .footer-contact-icon {
+      width: 26px;
+      height: 26px;
+    }
+  }
+
   /* ── logo card ── */
   .footer-logo-card {
     display: inline-flex; align-items: center; justify-content: center;
@@ -329,6 +390,9 @@ const FOOTER_STYLES = `
     box-shadow: 0 0 32px rgba(42,160,90,0.12), inset 0 1px 0 rgba(126,232,162,0.1);
     position: relative; overflow: hidden; margin-bottom: 20px;
     transition: box-shadow 0.3s;
+  }
+  @media (max-width: 640px) {
+    .footer-logo-card { padding: 8px 16px; margin-bottom: 12px; }
   }
   .footer-logo-card:hover {
     box-shadow: 0 0 48px rgba(42,160,90,0.22), inset 0 1px 0 rgba(126,232,162,0.15);
@@ -408,7 +472,7 @@ export default function Footer() {
               <h3 className="footer-nl-title">Get industry insights, direct to your inbox.</h3>
               <p className="footer-nl-sub">No spam. Unsubscribe anytime.</p>
             </div>
-            <form className="footer-nl-form" onSubmit={handleSubmit}>
+            <form className="footer-nl-form " onSubmit={handleSubmit}>
               <input
                 className="footer-nl-input"
                 type="email"
@@ -416,8 +480,8 @@ export default function Footer() {
                 value={email}
                 onChange={e => setEmail(e.target.value)}
               />
-              <button className="footer-nl-btn" type="submit">
-                {sent ? '✓ Subscribed' : 'Subscribe'}
+              <button className="footer-nl-btn" type="submit" style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+                {sent ? <><Check size={14} /> Subscribed</> : 'Subscribe'}
               </button>
             </form>
           </div>
@@ -441,29 +505,21 @@ export default function Footer() {
                 />
               </div>
 
-              <p style={{
-                fontSize: 13.5, color: 'rgba(255,255,255,0.45)',
-                lineHeight: 1.8, maxWidth: 290, margin: '0 0 28px',
-              }}>
-                UAE's leading tech-enabled food distribution powerhouse — connecting global supply chains with local markets.
+              <p className="footer-brand-desc">
+                UAE's leading food distribution powerhouse — connecting global supply chains with local markets.
               </p>
 
               {/* contact */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 24 }}>
+              <div className="footer-brand-contact">
                 <a href="mailto:info@gmitrading.me" className="footer-contact-link">
                   <span className="footer-contact-icon">
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#2aa05a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                      <polyline points="22,6 12,13 2,6"/>
-                    </svg>
+                    <Mail size={13} color="#2aa05a" />
                   </span>
                   info@gmitrading.me
                 </a>
                 <a href="tel:+97145095923" className="footer-contact-link">
                   <span className="footer-contact-icon">
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#2aa05a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.82a16 16 0 0 0 6.13 6.13l1.17-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
-                    </svg>
+                    <Phone size={13} color="#2aa05a" />
                   </span>
                   +971 4 509 5923
                 </a>
@@ -510,10 +566,7 @@ export default function Footer() {
                 {LOCATIONS.map((loc, i) => (
                   <div key={i} className="footer-loc-card">
                     <span className="footer-loc-icon">
-                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#2aa05a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                        <circle cx="12" cy="10" r="3"/>
-                      </svg>
+                      <MapPin size={13} color="#2aa05a" />
                     </span>
                     <div>
                       <div style={{ fontSize: 13, fontWeight: 700, color: '#fff', marginBottom: 4 }}>

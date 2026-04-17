@@ -79,7 +79,7 @@ export default function TermsConditionsPage() {
           <span className="legal-hero__orb legal-hero__orb--two" />
           <span className="legal-hero__orb legal-hero__orb--three" />
         </motion.div>
-        <motion.div className="container legal-hero__inner" variants={container} style={{ scale: heroScale }}>
+        <motion.div className="container legal-hero__inner p-4" variants={container} style={{ scale: heroScale }}>
           <motion.p className="legal-hero__kicker" variants={reveal}>Legal</motion.p>
           <motion.h1 variants={reveal}>Terms and Conditions</motion.h1>
           <motion.p className="legal-hero__lead" variants={reveal}>

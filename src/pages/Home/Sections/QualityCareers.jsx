@@ -1,5 +1,6 @@
 import React, { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
+import { Shield, FileText, DollarSign } from 'lucide-react'
 import '../../../styles/QualityCareers.css'
 // Replace with your actual image path
 import qualityImg from '../../../assets/images/quality.png'
@@ -69,31 +70,17 @@ export default function QualityCareers() {
     {
       title: 'Food Safety Leadership',
       desc: 'HACCP compliant facilities and ISO 22000 certification across all regional hubs.',
-      icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-          <path d="M12 2L3 7v9c0 5 9 8 9 8s9-3 9-8V7l-9-5z" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M9 12l2 2 4-4" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-      )
+      icon: <Shield size={24} strokeWidth={1.5} />
     },
     {
       title: 'Digital Ledger Traceability',
       desc: 'End-to-end batch traceability through our proprietary ledger, ensuring total transparency.',
-      icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-          <rect x="4" y="4" width="16" height="16" rx="2" ry="2" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M8 10h8M8 14h8" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-      )
+      icon: <FileText size={24} strokeWidth={1.5} />
     },
     {
       title: 'Sustainable Infrastructure',
       desc: 'Regional storage nodes reduce post-harvest losses and minimize food miles by 40%.',
-      icon: (
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-          <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-      )
+      icon: <DollarSign size={24} strokeWidth={1.5} />
     }
   ]
 

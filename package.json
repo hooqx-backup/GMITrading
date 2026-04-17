@@ -11,7 +11,12 @@
   },
   "dependencies": {
     "framer-motion": "^12.38.0",
+<<<<<<< HEAD
     "lenis": "^1.3.23",
+=======
+    "lenis": "^1.3.21",
+    "lucide-react": "^1.8.0",
+>>>>>>> 3df054dd24b57926bfec742d71a06037e7b41fe1
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-router-dom": "^6.30.3"

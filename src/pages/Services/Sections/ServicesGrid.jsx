@@ -1,14 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { Globe, LayoutGrid, Package, Truck, Tag, Smartphone, CreditCard, BarChart2, Check, ArrowRight } from 'lucide-react'
 
 const SERVICES = [
   {
     num: '01',
-    icon: (
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
-        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-      </svg>
-    ),
+    icon: <Globe size={26} strokeWidth={1.6} />,
     tag: 'Sourcing',
     title: 'Global Sourcing & Procurement',
     desc: 'Secure, cost-optimised supply from 25 countries with 500+ vetted mills and plantations.',
@@ -20,11 +16,7 @@ const SERVICES = [
   },
   {
     num: '02',
-    icon: (
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/>
-      </svg>
-    ),
+    icon: <LayoutGrid size={26} strokeWidth={1.6} />,
     tag: 'Quality',
     title: 'Quality Assurance & Compliance',
     desc: 'Food safety you can prove — in-house lab testing, HACCP & Halal on every batch.',
@@ -35,12 +27,7 @@ const SERVICES = [
   },
   {
     num: '03',
-    icon: (
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
-        <line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/>
-      </svg>
-    ),
+    icon: <Package size={26} strokeWidth={1.6} />,
     tag: 'Warehousing',
     title: 'Warehousing & Inventory',
     desc: 'Stock when you need it — 8,000 m² bonded, temperature-controlled, zero hidden cost.',
@@ -51,12 +38,7 @@ const SERVICES = [
   },
   {
     num: '04',
-    icon: (
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/>
-        <circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
-      </svg>
-    ),
+    icon: <Truck size={26} strokeWidth={1.6} />,
     tag: 'Logistics',
     title: 'Smart Logistics & Last-Mile',
     desc: 'From dock to door in 24 hours — GPS-tracked, mixed fleet, GCC cross-border.',
@@ -67,12 +49,7 @@ const SERVICES = [
   },
   {
     num: '05',
-    icon: (
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
-        <line x1="7" y1="7" x2="7.01" y2="7"/>
-      </svg>
-    ),
+    icon: <Tag size={26} strokeWidth={1.6} />,
     tag: 'Packaging',
     title: 'Private-Label & Re-Packaging',
     desc: 'Turn commodity into brand equity — design-to-shelf with metal detection lines.',
@@ -83,12 +60,7 @@ const SERVICES = [
   },
   {
     num: '06',
-    icon: (
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/>
-        <path d="M9 6h6M9 10h6M9 14h4"/>
-      </svg>
-    ),
+    icon: <Smartphone size={26} strokeWidth={1.6} />,
     tag: 'Digital',
     title: 'Digital B2B Platform',
     desc: "Live stock, dynamic pricing, 30-second re-orders. API hooks for SAP, Oracle, Zoho.",
@@ -99,11 +71,7 @@ const SERVICES = [
   },
   {
     num: '07',
-    icon: (
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/>
-      </svg>
-    ),
+    icon: <CreditCard size={26} strokeWidth={1.6} />,
     tag: 'Finance',
     title: 'Trade Finance & Credit',
     desc: "30 / 60 / 90-day terms, Islamic finance, LC handling. KYC approved in under 6 hours.",
@@ -114,12 +82,7 @@ const SERVICES = [
   },
   {
     num: '08',
-    icon: (
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-        <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/>
-        <line x1="6" y1="20" x2="6" y2="14"/><path d="M2 20h20"/>
-      </svg>
-    ),
+    icon: <BarChart2 size={26} strokeWidth={1.6} />,
     tag: 'Intelligence',
     title: 'Market Intelligence & Advisory',
     desc: 'Weekly price indices, demand-forecast dashboards, route-to-market consulting.',
@@ -156,6 +119,7 @@ function FeaturedCard({ s }) {
       ref={ref}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      className="services-featured-card"
       style={{
         gridColumn: 'span 2',
         background: 'linear-gradient(135deg, #0d2318 0%, #174b36 50%, #0a1a10 100%)',
@@ -215,9 +179,7 @@ function FeaturedCard({ s }) {
                 width:18, height:18, borderRadius:'50%', background:'rgba(42,160,90,0.2)',
                 border:'1px solid rgba(42,160,90,0.4)', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0,
               }}>
-                <svg width="9" height="9" viewBox="0 0 8 8" fill="none">
-                  <path d="M1.5 4l2 2 3-3.5" stroke="#2aa05a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+                <Check size={9} color="#2aa05a" strokeWidth={2.5} />
               </span>
               {f}
             </li>
@@ -233,9 +195,7 @@ function FeaturedCard({ s }) {
           onMouseLeave={e=>e.currentTarget.style.transform='translateY(0)'}
         >
           {s.cta}
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M5 12h14M12 5l7 7-7 7"/>
-          </svg>
+          <ArrowRight size={14} strokeWidth={2.5} />
         </a>
       </div>
 
@@ -380,9 +340,7 @@ function ServiceCard({ s, index }) {
         onMouseLeave={e=>e.currentTarget.style.gap='5px'}
       >
         {s.cta}
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M5 12h14M12 5l7 7-7 7"/>
-        </svg>
+        <ArrowRight size={13} strokeWidth={2.5} />
       </a>
     </div>
   )
@@ -452,6 +410,8 @@ export default function ServicesGrid() {
         }
         @media (max-width: 640px) {
           .services-bento { grid-template-columns: 1fr !important; }
+          .services-featured-card { grid-column: span 1 !important; flex-direction: column !important; padding: 28px 22px !important; gap: 24px !important; }
+          .services-featured-card > div:last-child { padding: 18px 24px !important; align-self: flex-start !important; }
         }
       `}</style>
     </section>

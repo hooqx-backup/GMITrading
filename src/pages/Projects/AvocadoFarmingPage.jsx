@@ -1,4 +1,5 @@
 import ProjectPage from './ProjectPage'
+import { Sprout, Snowflake, ClipboardList, Leaf, Thermometer, Check, DollarSign, Package, Tag } from 'lucide-react'
 
 const project = {
   title: 'Avocado Farming',
@@ -36,19 +37,19 @@ const project = {
     subheading: 'Complete traceability and cold-chain management from harvest to UAE distribution.',
     items: [
       {
-        icon: '🌱',
+        icon: <Sprout size={22} />,
         tag: 'Sourcing',
         title: 'Direct Farm Sourcing',
         desc: 'Long-term purchase agreements with 14 co-operatives across Kenya, Tanzania and Ethiopia. Fixed floor prices give farmers planning certainty; GMI gets first-right on premium-grade fruit.',
       },
       {
-        icon: '❄️',
+        icon: <Snowflake size={22} />,
         tag: 'Logistics',
         title: 'Unbroken Cold Chain',
         desc: 'Pre-cooling to 7°C within 4 hours of harvest, reefer containers at 7°C, and ripening rooms in Jebel Ali. Temperature logging at every handover point — visible to buyers on request.',
       },
       {
-        icon: '📋',
+        icon: <ClipboardList size={22} />,
         tag: 'Compliance',
         title: 'GLOBALG.A.P. Traceability',
         desc: 'Every pallet carries a GGN (GLOBALG.A.P. Number) linking it to the certified farm block, harvest date and packhouse QC data — meeting the strictest UAE retailer standards.',
@@ -71,12 +72,12 @@ const project = {
   features: {
     heading: 'Premium Avocado Solutions',
     items: [
-      { icon: '🥑', title: 'Hass & Fuerte Varieties', desc: 'Year-round supply through staggered sourcing from 3 countries and multiple harvest seasons.' },
-      { icon: '🌡️', title: 'Ripening-Room Service', desc: 'Ethylene ripening to retailer spec — from transit-hard (stage 2) to eat-ready (stage 5) on order.' },
-      { icon: '✓', title: 'GLOBALG.A.P. Certified', desc: 'All partner farms carry valid certificates — a mandatory requirement for UAE hypermarkets.' },
-      { icon: '💰', title: 'Direct Farm Pricing', desc: 'No broker layers. Grower-to-importer pricing passed through as lower cost or better margin for buyers.' },
-      { icon: '📦', title: 'Flexible Pack Formats', desc: '4-pack retail nets, 6-pack trays, 3 kg bulk bags and display cartons (4 kg / 5 kg) available.' },
-      { icon: '🏷️', title: 'Private Label', desc: 'Stickers, PLU labels and full carton overwraps printed to retailer spec — minimum 1 pallet per label run.' },
+      { icon: <Leaf size={18} />,        title: 'Hass & Fuerte Varieties', desc: 'Year-round supply through staggered sourcing from 3 countries and multiple harvest seasons.' },
+      { icon: <Thermometer size={18} />, title: 'Ripening-Room Service', desc: 'Ethylene ripening to retailer spec — from transit-hard (stage 2) to eat-ready (stage 5) on order.' },
+      { icon: <Check size={18} />,       title: 'GLOBALG.A.P. Certified', desc: 'All partner farms carry valid certificates — a mandatory requirement for UAE hypermarkets.' },
+      { icon: <DollarSign size={18} />,  title: 'Direct Farm Pricing', desc: 'No broker layers. Grower-to-importer pricing passed through as lower cost or better margin for buyers.' },
+      { icon: <Package size={18} />,     title: 'Flexible Pack Formats', desc: '4-pack retail nets, 6-pack trays, 3 kg bulk bags and display cartons (4 kg / 5 kg) available.' },
+      { icon: <Tag size={18} />,         title: 'Private Label', desc: 'Stickers, PLU labels and full carton overwraps printed to retailer spec — minimum 1 pallet per label run.' },
     ],
   },
 
