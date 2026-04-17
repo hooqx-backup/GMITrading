@@ -162,7 +162,11 @@ header { background: transparent; border: 0 }
 /* ── Mobile drawer — full-screen premium ── */
 .gmi-mobile-nav {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 80%;
+  max-width: 340px;
   z-index: 101;
   background: #061a0e;
   display: flex;

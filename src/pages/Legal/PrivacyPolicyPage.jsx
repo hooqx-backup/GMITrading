@@ -101,14 +101,7 @@ export default function PrivacyPolicyPage() {
         </motion.div>
       </motion.section>
 
-      <motion.div
-        className="legal-transition-overlay"
-        style={{ opacity: overlayOpacity, scaleX: overlayScale }}
-        aria-hidden="true"
-      >
-        <span className="legal-transition-overlay__beam legal-transition-overlay__beam--one" />
-        <span className="legal-transition-overlay__beam legal-transition-overlay__beam--two" />
-      </motion.div>
+      
 
       <motion.section className="legal-content" style={{ y: contentY }}>
         <motion.div className="container legal-content__grid" variants={container}>

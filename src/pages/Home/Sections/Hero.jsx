@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
+import { ArrowRight } from 'lucide-react'
 import bannerWebm from '../../../assets/videos/banner_video.webm'
 import Button from '../../../components/Button'
 import '../../../styles/Hero.css'
@@ -168,11 +169,7 @@ export default function Hero() {
             to="/contact"
             variant="primary"
             size="md"
-            icon={
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
-              </svg>
-            }
+            icon={<ArrowRight size={16} strokeWidth={2.5} />}
           >
             Get In Touch
           </Button>
@@ -183,8 +180,9 @@ export default function Hero() {
       </motion.div>
 
       {/* ── Stats ── */}
-      <div className="hero-stats">
+      <div className="hero-stats mt-10">
         {stats.map((s, i) => (
+
           <StatItem key={i} {...s} />
         ))}
       </div>

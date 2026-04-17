@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { Globe, FlaskConical, Warehouse, Truck, Users } from 'lucide-react'
 
 const STEPS = [
   {
@@ -7,13 +8,7 @@ const STEPS = [
     tag: 'Origin',
     desc: 'We secure product at origin through long-term farmer.',
     detail: '500+ vetted mills, ESG audits, forward contracts and price-hedging to lock in cost certainty before freight is booked.',
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10"/>
-        <line x1="2" y1="12" x2="22" y2="12"/>
-        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-      </svg>
-    ),
+    icon: <Globe size={28} strokeWidth={1.6} />,
     color: '#2aa05a',
     metric: '25', metricLabel: 'Countries',
   },
@@ -23,13 +18,7 @@ const STEPS = [
     tag: 'Lab QA',
     desc: 'Every lot is lab-tested before freight booking — aflatoxin, moisture, gluten and Halal.',
     detail: 'In-house certified lab runs full panel checks on every batch. No shipment leaves origin without a clean certificate.',
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M9 3v11a3 3 0 0 0 6 0V3"/>
-        <path d="M6.5 3h11"/>
-        <path d="M6 20h12"/>
-      </svg>
-    ),
+    icon: <FlaskConical size={28} strokeWidth={1.6} />,
     color: '#1a7fb5',
     metric: '100%', metricLabel: 'Batch Tested',
   },
@@ -39,12 +28,7 @@ const STEPS = [
     tag: 'Warehouse',
     desc: 'Goods land in our 8,000 m² Dubai warehouse for QC validation and batch coding.',
     detail: 'Bonded & temperature-controlled storage, FIFO rotation, cloud WMS batch tracking, re-pack & kitting lines.',
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-        <polyline points="9 22 9 12 15 12 15 22"/>
-      </svg>
-    ),
+    icon: <Warehouse size={28} strokeWidth={1.6} />,
     color: '#7c3aed',
     metric: '8,000m²', metricLabel: 'Capacity',
   },
@@ -54,14 +38,7 @@ const STEPS = [
     tag: 'Last-Mile',
     desc: 'Fleet dispatches 24/7 with live GPS tracking and e-POD confirmation.',
     detail: 'Mixed fleet of chillers, dry vans, bulk tippers and tankers. UAE in 24 h, GCC cross-border in 72 h.',
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="1" y="3" width="15" height="13" rx="1"/>
-        <path d="M16 8h4l3 3v5h-7V8z"/>
-        <circle cx="5.5" cy="18.5" r="2.5"/>
-        <circle cx="18.5" cy="18.5" r="2.5"/>
-      </svg>
-    ),
+    icon: <Truck size={28} strokeWidth={1.6} />,
     color: '#d97706',
     metric: '24 h', metricLabel: 'UAE Delivery',
   },
@@ -71,14 +48,7 @@ const STEPS = [
     tag: 'After-Care',
     desc: 'Dedicated account managers and weekly market data keep your business ahead.',
     detail: 'Weekly price indices for sugar, rice and oil. Demand-forecast dashboards by Emirate. Route-to-market consulting.',
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-        <circle cx="9" cy="7" r="4"/>
-        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-      </svg>
-    ),
+    icon: <Users size={28} strokeWidth={1.6} />,
     color: '#059669',
     metric: 'Weekly', metricLabel: 'Reports',
   },
@@ -126,7 +96,7 @@ function StepCard({ step, index, active, onClick }) {
         opacity: visible ? 1 : 0,
         transitionDelay: `${index * 80}ms`,
         boxShadow: isActive
-          ? `0 28px 64px ${step.color}28, 0 0 0 1px ${step.color}30, inset 0 1px 0 rgba(255,255,255,0.95)`
+          ? `0 28px 64px ${step.color}28, 0 0 0 1px ${step.color}30, inset 0 1px 0 rgba(255,255,255,0.95), inset 0 3px 0 0 ${step.color}`
           : '0 2px 16px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.85)',
         overflow: 'visible',
         flex: '1 1 0',
@@ -136,15 +106,6 @@ function StepCard({ step, index, active, onClick }) {
         flexDirection: 'column',
       }}
     >
-      {/* active top bar */}
-      <div style={{
-        position: 'absolute', top: 0, left: 0, right: 0, height: 3,
-        background: `linear-gradient(90deg, ${step.color}, ${step.color}88)`,
-        opacity: isActive ? 1 : 0,
-        transition: 'opacity 0.3s',
-        borderRadius: '18px 18px 0 0',
-      }}/>
-
       {/* number watermark */}
       <div style={{
         position: 'absolute', bottom: -8, right: 10,
@@ -206,8 +167,8 @@ function StepCard({ step, index, active, onClick }) {
         </span>
       </div>
 
-      {/* expanded detail — absolutely positioned so it NEVER shifts layout */}
-      <div style={{
+      {/* expanded detail */}
+      <div className="process-step-detail" data-active={isActive.toString()} style={{
         position: 'absolute',
         top: 'calc(100% + 10px)',
         left: 0, right: 0,
@@ -334,7 +295,7 @@ export default function ProcessSteps() {
           </div>
 
           {/* cards row */}
-          <div className="process-row" style={{ display: 'flex', gap: 16, alignItems: 'stretch', paddingBottom: 140 }}>
+          <div className="process-row " style={{ display: 'flex', gap: 16, alignItems: 'stretch', paddingBottom: 140 }}>
             {STEPS.map((s, i) => (
               <StepCard
                 key={i}
@@ -363,8 +324,9 @@ export default function ProcessSteps() {
 
       <style>{`
         @media (max-width: 900px) {
-          .process-row { flex-direction: column !important; }
-          .process-row > * { width: 100% !important; }
+          .process-row { flex-direction: column !important; padding-bottom: 40px !important; gap: 24px !important; }
+          .process-row > * { width: 100% !important; min-height: unset !important; }
+          .process-step-detail { display: none !important; }
         }
       `}</style>
     </section>

@@ -1265,6 +1265,7 @@
 }
 @media (max-width: 640px) {
   .prod-hero-word { font-size: clamp(42px, 12vw, 64px); letter-spacing: -2px; }
+  .prod-hero-ctas { justify-content: center; }
   .prod-hero-stats { gap: 10px; }
   .prod-hero-stat-card { min-width: 88px; padding: 14px 18px; }
   .prod-hero-stat-n { font-size: 20px; }

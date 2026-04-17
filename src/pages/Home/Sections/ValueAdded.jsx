@@ -1,5 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import { MapPin, ShoppingBag, Info } from 'lucide-react'
 import valueBg from '../../../assets/images/value-back.png'
 import '../../../styles/ValueAdded.css'
 
@@ -56,23 +57,12 @@ const features = [
   {
     title: 'Grains, Pulses & Sugar',
     desc: 'Automated form-fill-seal lines for 1 kg, 2 kg and 5 kg retail bags — precision-packed at scale.',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 2C8 2 4 6 4 10c0 5.25 8 12 8 12s8-6.75 8-12c0-4-4-8-8-8z"/>
-        <circle cx="12" cy="10" r="2.5"/>
-      </svg>
-    ),
+    icon: <MapPin strokeWidth={1.8} />,
   },
   {
     title: 'Edible Oils',
     desc: 'High-speed filling line for 18 L food-service tins with nitrogen-flushing for extended shelf life.',
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M6 3h12l1 9H5L6 3z"/>
-        <path d="M5 12v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/>
-        <path d="M10 17v-4M14 17v-4"/>
-      </svg>
-    ),
+    icon: <ShoppingBag strokeWidth={1.8} />,
   },
 ]
 
@@ -183,9 +173,7 @@ export default function ValueAdded() {
             whileInView="show"
             viewport={{ once: true, amount: 0.5 }}
           >
-            <svg className="va-note-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/>
-            </svg>
+            <Info className="va-note-icon" size={18} />
             Vertical integration across packaging enables consistent quality control
             and faster time-to-shelf for our distribution partners.
           </motion.div>

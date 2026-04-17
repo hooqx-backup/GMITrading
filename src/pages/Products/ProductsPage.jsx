@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { Globe, CheckCircle2, Package, Zap, Search, Handshake, Sprout, Microscope, ClipboardList, Ship, ArrowRight, ArrowDown, MapPin, Star, Phone } from 'lucide-react'
 import {
   motion,
   useMotionValue,
@@ -121,12 +122,12 @@ const STATS = [
 ]
 
 const WHY_ITEMS = [
-  { icon: '🌍', title: 'Global Sourcing Network',  desc: 'Direct relationships with certified farms and producers across 30+ countries ensuring the best origin pricing.'         },
-  { icon: '✅', title: 'Quality Assurance',         desc: 'Every shipment undergoes rigorous third-party testing at origin and destination. ISO & HACCP certified processes.'     },
-  { icon: '📦', title: 'Flexible Packaging',        desc: 'From 1kg retail packs to 50MT bulk containers — we handle every specification, label, and branding requirement.'      },
-  { icon: '⚡', title: 'Fast Execution',             desc: 'Streamlined logistics with pre-arranged freight and documentation ensures on-time delivery, every time.'              },
-  { icon: '🔍', title: 'Full Traceability',          desc: 'Farm-to-port traceability with documented chain of custody, phytosanitary certificates, and COAs.'                  },
-  { icon: '🤝', title: 'Long-Term Partnership',      desc: 'We build lasting relationships — with transparent pricing, consistent quality, and dedicated account management.'    },
+  { icon: <Globe size={20} />,       title: 'Global Sourcing Network',  desc: 'Direct relationships with certified farms and producers across 30+ countries ensuring the best origin pricing.'         },
+  { icon: <CheckCircle2 size={20} />,title: 'Quality Assurance',         desc: 'Every shipment undergoes rigorous third-party testing at origin and destination. ISO & HACCP certified processes.'     },
+  { icon: <Package size={20} />,     title: 'Flexible Packaging',        desc: 'From 1kg retail packs to 50MT bulk containers — we handle every specification, label, and branding requirement.'      },
+  { icon: <Zap size={20} />,         title: 'Fast Execution',             desc: 'Streamlined logistics with pre-arranged freight and documentation ensures on-time delivery, every time.'              },
+  { icon: <Search size={20} />,      title: 'Full Traceability',          desc: 'Farm-to-port traceability with documented chain of custody, phytosanitary certificates, and COAs.'                  },
+  { icon: <Handshake size={20} />,   title: 'Long-Term Partnership',      desc: 'We build lasting relationships — with transparent pricing, consistent quality, and dedicated account management.'    },
 ]
 
 const REGIONS = [
@@ -304,9 +305,7 @@ function HeroSection() {
             transition={SPRING}
           >
             Explore Categories
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M12 5v14M5 12l7 7 7-7"/>
-            </svg>
+            <ArrowDown size={14} strokeWidth={2.5} />
           </motion.a>
 
           <motion.div
@@ -316,9 +315,7 @@ function HeroSection() {
           >
             <Link to="/contact" className="prod-btn-ghost">
               Request a Quote
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
-              </svg>
+              <ArrowRight size={14} strokeWidth={2.5} />
             </Link>
           </motion.div>
         </motion.div>
@@ -438,9 +435,7 @@ function CategoriesSection() {
               <p className="prod-cat-desc">{cat.desc}</p>
 
               <div className="prod-cat-origin">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={cat.accent} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 1 8 8c0 5.25-8 14-8 14S4 15.25 4 10a8 8 0 0 1 8-8z"/>
-                </svg>
+                <MapPin size={14} color={cat.accent} strokeWidth={2} />
                 <span>{cat.origin}</span>
               </div>
 
@@ -474,9 +469,7 @@ function CategoriesSection() {
               >
                 <Link to="/contact" className="prod-btn-accent" style={{ background: cat.accent }}>
                   Enquire About {cat.label}
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                  </svg>
+                  <ArrowRight size={14} strokeWidth={2.5} />
                 </Link>
               </motion.div>
             </div>
@@ -647,9 +640,7 @@ function ProductCard({ product }) {
               style={{ borderColor: catAccent + '90', color: catAccent }}
             >
               Request Spec Sheet
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
-              </svg>
+              <ArrowRight size={11} strokeWidth={2.5} />
             </Link>
           </motion.div>
 
@@ -740,9 +731,7 @@ function StatsSection() {
                 whileHover={{ y: -4, boxShadow: '0 12px 32px rgba(31,122,90,0.15)' }}
                 transition={SPRING}
               >
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={PRIMARY} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                </svg>
+                <Star size={14} color={PRIMARY} strokeWidth={2} />
                 {c}
               </motion.div>
             ))}
@@ -776,11 +765,11 @@ function StatCard({ stat, inView, index }) {
    SECTION 5 — SOURCING PROCESS
 ══════════════════════════════════════════════ */
 const STEPS = [
-  { num: '01', icon: '🌱', title: 'Origin Sourcing',     desc: 'Direct relationships with certified farms and cooperatives across prime agricultural regions worldwide.'            },
-  { num: '02', icon: '🔬', title: 'Quality Testing',     desc: 'Independent third-party laboratory analysis for pesticides, mycotoxins, moisture, and grade specifications.'        },
-  { num: '03', icon: '📋', title: 'Documentation',       desc: 'Full COA, phytosanitary certificates, certificates of origin, and all import/export documentation prepared.'       },
-  { num: '04', icon: '🚢', title: 'Freight & Logistics', desc: 'Pre-arranged freight contracts with trusted carriers ensuring cost-effective, on-time delivery globally.'           },
-  { num: '05', icon: '✅', title: 'Delivery & Support',  desc: 'Port-to-warehouse coordination with post-delivery support and full traceability documentation retained.'            },
+  { num: '01', icon: <Sprout size={20} />,       title: 'Origin Sourcing',     desc: 'Direct relationships with certified farms and cooperatives across prime agricultural regions worldwide.'            },
+  { num: '02', icon: <Microscope size={20} />,   title: 'Quality Testing',     desc: 'Independent third-party laboratory analysis for pesticides, mycotoxins, moisture, and grade specifications.'        },
+  { num: '03', icon: <ClipboardList size={20} />,title: 'Documentation',       desc: 'Full COA, phytosanitary certificates, certificates of origin, and all import/export documentation prepared.'       },
+  { num: '04', icon: <Ship size={20} />,         title: 'Freight & Logistics', desc: 'Pre-arranged freight contracts with trusted carriers ensuring cost-effective, on-time delivery globally.'           },
+  { num: '05', icon: <CheckCircle2 size={20} />, title: 'Delivery & Support',  desc: 'Port-to-warehouse coordination with post-delivery support and full traceability documentation retained.'            },
 ]
 
 function SourcingSection() {
@@ -885,9 +874,7 @@ function WhySection() {
             >
               <Link to="/about" className="prod-btn-outline">
                 Learn About Us
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
+                <ArrowRight size={13} strokeWidth={2.5} />
               </Link>
             </motion.div>
 
@@ -1033,11 +1020,7 @@ function RegionCard({ region }) {
           className="prod-region-icon"
           style={{ border: `1.5px solid ${region.accent}30` }}
         >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-            stroke={hovered ? '#fff' : region.accent} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <circle cx="12" cy="12" r="10"/>
-            <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-          </svg>
+          <Globe size={18} color={hovered ? '#fff' : region.accent} strokeWidth={2} />
         </motion.div>
         <h4 className="prod-region-title" style={{ color: hovered ? region.accent : '#0f172a' }}>
           {region.name}
@@ -1126,9 +1109,7 @@ function CtaSection() {
               >
                 <Link to="/contact" className="prod-cta-btn-primary">
                   Get in Touch
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                  </svg>
+                  <ArrowRight size={15} strokeWidth={2.5} />
                 </Link>
               </motion.div>
             </motion.div>
@@ -1140,9 +1121,7 @@ function CtaSection() {
                 transition={SPRING}
               >
                 <a href="tel:+97145095923" className="prod-cta-btn-ghost">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.0 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/>
-                  </svg>
+                  <Phone size={15} strokeWidth={2} />
                   Call Us Now
                 </a>
               </motion.div>

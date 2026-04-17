@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { Factory, Building2, Package, MapPin, ArrowRight } from 'lucide-react'
 
 const LOCATIONS = [
   {
@@ -6,7 +7,7 @@ const LOCATIONS = [
     role: 'Head Office & Main Warehouse',
     address: 'Warehouse #10, Eternity Warehouses, Ras Al Khor Industrial Area, Dubai, UAE',
     color: '#2aa05a',
-    icon: '🏭',
+    icon: <Factory size={24} />,
     mapUrl: 'https://maps.google.com/?q=Ras+Al+Khor+Industrial+Area+Dubai',
   },
   {
@@ -14,7 +15,7 @@ const LOCATIONS = [
     role: 'Distribution Hub',
     address: 'Building #145, Musaffah Industrial Area, Musaffah 37, Abu Dhabi, UAE',
     color: '#1a7fb5',
-    icon: '🏢',
+    icon: <Building2 size={24} />,
     mapUrl: 'https://maps.google.com/?q=Musaffah+Industrial+Area+Abu+Dhabi',
   },
   {
@@ -22,7 +23,7 @@ const LOCATIONS = [
     role: 'Storage Facility',
     address: 'Al Jurf Industrial Area, Bahia, Ajman, UAE',
     color: '#7c3aed',
-    icon: '📦',
+    icon: <Package size={24} />,
     mapUrl: 'https://maps.google.com/?q=Al+Jurf+Industrial+Area+Ajman',
   },
 ]
@@ -128,14 +129,9 @@ function LocationCard({ loc, index }) {
         onMouseEnter={e => e.currentTarget.style.gap = '10px'}
         onMouseLeave={e => e.currentTarget.style.gap = '6px'}
       >
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-          <circle cx="12" cy="10" r="3"/>
-        </svg>
+        <MapPin size={14} />
         View on Google Maps
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M5 12h14M12 5l7 7-7 7"/>
-        </svg>
+        <ArrowRight size={13} />
       </a>
     </div>
   )

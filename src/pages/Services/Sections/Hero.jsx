@@ -236,7 +236,7 @@ export default function Hero() {
         </div>
 
         {/* CTA */}
-        <div>
+        <div style={{ textAlign: 'center' }}>
           <Link
             to="/contact"
             style={{

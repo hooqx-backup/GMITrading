@@ -86,7 +86,7 @@
 .legal-hero__inner {
   border: 1px solid rgba(20, 81, 58, 0.12);
   border-radius: 24px;
-  padding: clamp(24px, 4vw, 50px);
+  padding: clamp(34px, 5vw, 60px);
   background: linear-gradient(140deg, rgba(255, 255, 255, 0.84), rgba(243, 250, 246, 0.88));
   box-shadow: 0 22px 40px rgba(9, 22, 16, 0.12);
   backdrop-filter: blur(8px);
@@ -96,13 +96,21 @@
   z-index: 1;
   transform-origin: center top;
   will-change: transform;
+  max-width: 1140px;
+  margin-left: auto;
+  margin-right: auto;
+
+
 }
+
+
 
 .legal-hero__inner::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(112deg, transparent 22%, rgba(255, 255, 255, 0.42) 46%, transparent 70%);
+  background: linear+--
+  -gradient(112deg, transparent 22%, rgba(255, 255, 255, 0.42) 46%, transparent 70%);
   transform: translateX(-130%);
   animation: legalShimmerSweep 5.6s linear infinite;
   pointer-events: none;
@@ -116,6 +124,7 @@
   text-transform: uppercase;
   color: #1f7a5a;
 }
+
 
 .legal-hero h1 {
   margin: 12px 0 0;
@@ -427,7 +436,9 @@
   .legal-hero {
     padding: 58px 0 24px;
   }
-
+.legal-hero__inner{
+  max-width: 350px;
+}
   .legal-hero__orbs {
     display: none;
   }
@@ -435,7 +446,7 @@
   .legal-content {
     padding: 8px 0 54px;
   }
-
+.legal-hero__inner
   .legal-transition-overlay {
     height: 36px;
     width: calc(100% - 32px);

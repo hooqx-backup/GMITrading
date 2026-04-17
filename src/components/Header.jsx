@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { NavLink } from 'react-router-dom'
+import { ChevronDown, ChevronRight, ArrowRight, X } from 'lucide-react'
 import gmiLogo from '../assets/logos/gmi-logo.png'
 import '../styles/Header.css'
 
@@ -8,8 +9,9 @@ const links = [
   { to: '/about', label: 'About' },
 
 
-  { to: '/contact', label: 'Contact' },
-  { to: '/services', label: 'Services' }
+
+  { to: '/services', label: 'Services' },
+    { to: '/contact', label: 'Contact' }
 ]
 
 const projectDropdown = [
@@ -84,9 +86,7 @@ export default function Header() {
                 onClick={() => setProjectsOpen((v) => !v)}
               >
                 Projects
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginLeft: '6px', transition: 'transform 0.3s', transform: projectsOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}>
-                  <path d="M6 9l6 6 6-6" />
-                </svg>
+                <ChevronDown size={16} style={{ marginLeft: '6px', transition: 'transform 0.3s', transform: projectsOpen ? 'rotate(180deg)' : 'rotate(0deg)' }} />
                 <span className="gmi-nav-link-bar" />
               </button>
               <div className="gmi-nav-dropdown">
@@ -156,9 +156,7 @@ export default function Header() {
         <div className="gmi-mobile-nav-top">
           <img src={gmiLogo} alt="GMI Trading" className="gmi-mobile-logo" />
           <button className="gmi-mobile-close" onClick={() => setOpen(false)} aria-label="Close menu">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-              <path d="M18 6L6 18M6 6l12 12"/>
-            </svg>
+            <X size={22} />
           </button>
         </div>
 
@@ -178,9 +176,7 @@ export default function Header() {
               <span className="gmi-mobile-link-num">0{i + 1}</span>
               <span className="gmi-mobile-link-label">{l.label}</span>
               <span className="gmi-mobile-link-arrow">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
+                <ArrowRight size={16} />
               </span>
             </NavLink>
           ))}
@@ -195,9 +191,7 @@ export default function Header() {
               <span className="gmi-mobile-link-num">0{links.length + 1}</span>
               <span className="gmi-mobile-link-label">Projects</span>
               <span className="gmi-mobile-link-arrow" style={{ transform: projectsOpen ? 'rotate(90deg)' : 'rotate(0)' }}>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M9 6l6 6-6 6"/>
-                </svg>
+                <ChevronRight size={16} />
               </span>
             </button>
             {projectsOpen && (

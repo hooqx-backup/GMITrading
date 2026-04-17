@@ -1,4 +1,5 @@
 import ProjectPage from './ProjectPage'
+import { Ruler, Wind, Tag, Check, Snowflake, Zap, FlaskConical, Factory, Package } from 'lucide-react'
 
 const project = {
   title: 'Oil Tinning',
@@ -36,19 +37,19 @@ const project = {
     subheading: 'Every tin is tested, sealed and tracked from our Jebel Ali facility to the end shelf.',
     items: [
       {
-        icon: '🧪',
+        icon: <FlaskConical size={22} />,
         tag: 'Quality Assurance',
         title: 'Lab-Verified Quality',
         desc: 'Every batch passes FFA, peroxide value and moisture testing before the line starts. Non-conforming bulk is rejected on arrival — never blended through.',
       },
       {
-        icon: '🏭',
+        icon: <Factory size={22} />,
         tag: 'Automation',
         title: 'High-Speed Filling',
         desc: 'Automated rotary fillers deliver ±0.5% fill accuracy at up to 2,400 tins per hour. Nitrogen flushing before sealing extends shelf life to 24 months.',
       },
       {
-        icon: '📦',
+        icon: <Package size={22} />,
         tag: 'Customization',
         title: 'Custom Labelling',
         desc: 'In-house digital printing supports Arabic/English bilingual labels, retailer private-label artwork and full ESMA-compliant nutrition panels.',
@@ -70,12 +71,12 @@ const project = {
   features: {
     heading: 'Why Choose GMI Oil Tinning',
     items: [
-      { icon: '📏', title: 'Tin Sizes: 1 L – 18 L', desc: 'Covers retail, food-service and industrial pack formats from a single facility.' },
-      { icon: '💨', title: 'Nitrogen Flushing', desc: 'Inert-gas sealing eliminates headspace oxygen — 24-month shelf life guaranteed.' },
-      { icon: '🏷️', title: 'Private Label Ready', desc: 'ESMA-compliant bilingual labels printed in-house. Minimum run: 500 units.' },
-      { icon: '✓', title: 'HACCP Facility', desc: 'Jebel Ali plant operates under HACCP protocols; ISO 22000 certification in progress.' },
-      { icon: '❄️', title: 'Cold-Chain Logistics', desc: 'Temperature-monitored vehicles maintain <25°C throughout last-mile delivery.' },
-      { icon: '⚡', title: 'Same-Day Cut-off', desc: 'Orders received before 14:00 dispatch the same evening for next-day UAE delivery.' },
+      { icon: <Ruler size={18} />,    title: 'Tin Sizes: 1 L – 18 L', desc: 'Covers retail, food-service and industrial pack formats from a single facility.' },
+      { icon: <Wind size={18} />,     title: 'Nitrogen Flushing', desc: 'Inert-gas sealing eliminates headspace oxygen — 24-month shelf life guaranteed.' },
+      { icon: <Tag size={18} />,      title: 'Private Label Ready', desc: 'ESMA-compliant bilingual labels printed in-house. Minimum run: 500 units.' },
+      { icon: <Check size={18} />,    title: 'HACCP Facility', desc: 'Jebel Ali plant operates under HACCP protocols; ISO 22000 certification in progress.' },
+      { icon: <Snowflake size={18} />,title: 'Cold-Chain Logistics', desc: 'Temperature-monitored vehicles maintain <25°C throughout last-mile delivery.' },
+      { icon: <Zap size={18} />,      title: 'Same-Day Cut-off', desc: 'Orders received before 14:00 dispatch the same evening for next-day UAE delivery.' },
     ],
   },
 
