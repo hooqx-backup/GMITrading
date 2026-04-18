@@ -7,6 +7,7 @@ import Projects from "./Sections/Projects";
 import QualityCareers from "./Sections/QualityCareers";
 import ContactForm from "./Sections/ContactForm";
 import AboutSection from "./Sections/About";
+import OurPartners from "./Sections/OurPartners";
 
 export default function HomePage() {
   return (
@@ -18,8 +19,10 @@ export default function HomePage() {
       <ValueAdded />
       <Spotlight />
       <Projects />
+
       <QualityCareers />
       <ContactForm />
-  </>
+      <OurPartners />
+    </>
   );
 }
